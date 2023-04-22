@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\enric\\desktop\\unreal\\pacman_leaked-main\\pacman_leaked-main\\intermediate\\build\\win64\\unrealeditor\\inc\\pacmangrid\\pacmangrid.init.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\enric\\desktop\\unreal\\pacman_leaked-main\\pacman_leaked-main\\intermediate\\build\\win64\\pacmangrideditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\users\\enric\\desktop\\unreal\\pacman_leaked-main\\pacman_leaked-main\\intermediate\\build\\win64\\unrealeditor\\development\\pacmangrid\\definitions.pacmangrid.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

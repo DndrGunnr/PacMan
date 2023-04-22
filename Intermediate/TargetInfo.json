@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "PacmanGrid",
+			"Path": "C:\\Users\\enric\\Desktop\\unreal\\PacMan_Leaked-main\\PacMan_Leaked-main\\Source\\PacmanGrid.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "PacmanGridEditor",
+			"Path": "C:\\Users\\enric\\Desktop\\unreal\\PacMan_Leaked-main\\PacMan_Leaked-main\\Source\\PacmanGridEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

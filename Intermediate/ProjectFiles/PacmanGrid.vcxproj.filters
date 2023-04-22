@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\PacmanGrid.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\PacmanGrid.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\PacmanGridEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\README.md" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Config\HoloLens">
+      <UniqueIdentifier>{4C8DD267-CDE7-336F-8602-F5F485D22BAB}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\HoloLens\HoloLensEngine.ini">
+      <Filter>Config\HoloLens</Filter>
+    </None>
+    <Filter Include="Source\PacmanGrid">
+      <UniqueIdentifier>{74700D82-87E2-3009-BFE1-8520355C2DD1}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\PacmanGrid\PacmanGrid.Build.cs">
+      <Filter>Source\PacmanGrid</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\PacmanGrid\PacmanGrid.cpp">
+      <Filter>Source\PacmanGrid</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PacmanGrid\PacmanGrid.h">
+      <Filter>Source\PacmanGrid</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\PacmanGrid\PacmanGridGameModeBase.cpp">
+      <Filter>Source\PacmanGrid</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\PacmanGrid\PacmanGridGameModeBase.h">
+      <Filter>Source\PacmanGrid</Filter>
+    </ClInclude>
+    <Filter Include="Source\PacmanGrid\Private">
+      <UniqueIdentifier>{3A73A544-BBD3-37CE-A7C4-B9F2BE3AC910}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\Blinky.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\GridBaseNode.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\GridGenerator.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\GridPawn.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\GridPlayerController.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\Inky.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\LabyrinthNode.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\PacmanPawn.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\PhantomPawn.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\PointNode.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\TeleportNode.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\TestGridGameMode.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\WallNode.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\PacmanGrid\Public">
+      <UniqueIdentifier>{488E724B-BC17-33CC-A6E9-4C8A0BEEAF6C}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\Blinky.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\GridBaseNode.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\GridGenerator.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\GridPawn.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\GridPlayerController.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\Inky.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\LabyrinthNode.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\PacmanPawn.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\PhantomPawn.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\PointNode.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\TeleportNode.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\TestGridGameMode.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\WallNode.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
