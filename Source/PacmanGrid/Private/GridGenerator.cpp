@@ -4,7 +4,7 @@
 #include "GridGenerator.h"
 
 constexpr int MapSizeX = 31;
-// la y contiene 28 elementi (+ il carattere di fine stringa)
+// la y contiene 29 elementi (+ il carattere di fine stringa)
 constexpr int MapSizeY = 29;
 
 // # - Wall
@@ -22,6 +22,7 @@ constexpr int MapSizeY = 29;
 // N - Ghost Area
 // I - Invisible Not Walkable
 // E - Ghost Exit
+// . - Point
 
 static char Map[MapSizeX][MapSizeY] = {
 	"############################",

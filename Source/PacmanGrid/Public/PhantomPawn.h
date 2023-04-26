@@ -26,6 +26,10 @@ protected:
 
 	virtual void OnNodeReached() override;
 
+	bool bIsFrightened;
+
+	bool bIsEaten;
+
 private:
 	UPROPERTY(VisibleAnywhere)
 		class APacmanPawn* Player;
@@ -39,4 +43,12 @@ public:
 	UFUNCTION()
 		virtual AGridBaseNode* GetPlayerRelativeTarget();
 	void SetGhostTarget();
+	UFUNCTION()
+		void SetFrightened(bool Frightened);
+	UFUNCTION()
+		void SetEaten(bool Eaten);
+	UFUNCTION()
+		bool IsFrightened() const;
+	UFUNCTION()
+	bool IsEaten() const;
 };

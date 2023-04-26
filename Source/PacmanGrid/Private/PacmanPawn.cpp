@@ -2,6 +2,8 @@
 
 
 #include "PacmanPawn.h"
+#include "TestGridGameMode.h"
+#include "GridPawn.h"
 
 APacmanPawn::APacmanPawn()
 {
@@ -91,11 +93,26 @@ void APacmanPawn::SetTargetNode(AGridBaseNode* Node)
 void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
 
 	const auto PointNode = Cast<APointNode>(OtherActor);
-
+	//overlapping of point node
 	if (PointNode && (PointNode->get_EEatable_id() == Point) && !(PointNode->get_isEaten())) {
 
 		PointNode->Collider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 			PointNode->Point_Mesh->SetVisibility(false);
 			PointNode->set_isEaten();
+	}
+
+	const auto PowerNode = Cast<APowerNode>(OtherActor);
+	//overlapping of power node
+	if (PowerNode && (PowerNode->get_EEatable_id() == Power) && !(PowerNode->get_isEaten())) {
+		PowerNode->Point_Collider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		PowerNode->Point_Mesh->SetVisibility(false);
+		PowerNode->set_isEaten();
+
+
+		//asyncronous state change ,TODO: implement succesful wasChase condition
+		GameMode->FrightenedMode(true);
+		
+		
+
 	}
 }

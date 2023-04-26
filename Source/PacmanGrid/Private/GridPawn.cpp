@@ -110,29 +110,28 @@ void AGridPawn::MoveToCurrentTargetNode()
 	SetActorLocation(Location);
 }
 
-void AGridPawn::OnNodeReached()
-{
+void AGridPawn::OnNodeReached(){
 	CurrentGridCoords = TargetNode->GetGridPosition();
 	LastNode = TargetNode;
 	SetTargetNode(nullptr);
 
 	//teleport check
-	if (leftTp == LastNode && LastValidInputDirection == FVector(0,1,0))
+	if (leftTp == LastNode && LastValidInputDirection == FVector(0, -1, 0)){
 		LastNode = *GridGenTMap.Find(FVector2D(16, 27));
 		SetNextNode(*(GridGenTMap.Find(FVector2D(16, 26))));
 		SetTargetNode(NextNode);
 		//TeleportTo(rightTp, FRotator(0, 0, 0)); doesn't work
 		SetActorLocation(FVector(1650.0f, 2750.0f, GetActorLocation().Z));
-		
+	}
 		
 
-	if (CurrentGridCoords == FVector2D(16, 27))
+	if (rightTp == LastNode && LastValidInputDirection == FVector(0, 1, 0)){
 		LastNode = *GridGenTMap.Find(FVector2D(16, 0));
 		SetNextNode(*(GridGenTMap.Find(FVector2D(16, 1))));
 		SetTargetNode(NextNode);
 		//TeleportTo(leftTp, FRotator(0, 0, 0)); doesn't work
 		SetActorLocation(FVector(1650.0f, 50.0f, GetActorLocation().Z));
-	
+	}
 }
 
 void AGridPawn::SetTargetNode(AGridBaseNode* Node)

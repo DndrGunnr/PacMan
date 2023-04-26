@@ -18,6 +18,10 @@ class APacmanPawn;
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_SPARSE_DATA
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execIsEaten); \
+	DECLARE_FUNCTION(execIsFrightened); \
+	DECLARE_FUNCTION(execSetEaten); \
+	DECLARE_FUNCTION(execSetFrightened); \
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
 	DECLARE_FUNCTION(execGetPlayer);
@@ -25,6 +29,10 @@ class APacmanPawn;
 
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execIsEaten); \
+	DECLARE_FUNCTION(execIsFrightened); \
+	DECLARE_FUNCTION(execSetEaten); \
+	DECLARE_FUNCTION(execSetFrightened); \
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
 	DECLARE_FUNCTION(execGetPlayer);

@@ -5,9 +5,13 @@
 
 ATestGridGameMode::ATestGridGameMode()
 {
-
+	PowerNode_time = 6.0f;
+	Scatter_time_1 = 7.0f;
+	Scatter_time_2 = 5.0f;
+	Chase_time = 20.0f;
+	//starting in scatter mode
+	wasChaseMode = false;
 }
-
 
 void ATestGridGameMode::BeginPlay()
 {
@@ -36,6 +40,53 @@ void ATestGridGameMode::BeginPlay()
 		GField = GetWorld()->SpawnActor<AGridGenerator>(GridGeneratorClass, GridPos, FRotationMatrix::MakeFromX(FVector(0, 0, 0)).Rotator());
 	};
 
-	BlinkyPawn = GetWorld()->SpawnActor<ABlinky>(BlinkyClass, FVector((100 * 27) + 50, (100 * 26) + 50, 5.0f), FRotator(0, 0, 0));
-	InkyPawn = GetWorld()->SpawnActor<AInky>(InkyClass, FVector((100 * 5) + 50, (100 * 26) + 50, 5.0f), FRotator(0, 0, 0));
+	BlinkyPtr = GetWorld()->SpawnActor<ABlinky>(BlinkyClass, FVector((100 * 19) + 50, (100 * 13) + 50, 5.0f), FRotator(0, 0, 0));
+	InkyPtr = GetWorld()->SpawnActor<AInky>(InkyClass, FVector((100 * 19) + 50, (100 * 15) + 50, 5.0f), FRotator(0, 0, 0));
+	CurrentState=EState::Scatter;
+	ScatterMode();
 }
+
+void ATestGridGameMode::FrightenedMode(bool)
+{
+	//must pause the timer of the previous state
+	if (wasChaseMode) {
+		GetWorld()->GetTimerManager().PauseTimer(ChaseModeTimer);
+	}
+	else {
+		GetWorld()->GetTimerManager().PauseTimer(ScatterModeTimer);
+	}
+	//updating the state of the game
+	CurrentState=EState::Frightened;
+	//setting the timer for the end of the frightened mode
+	GetWorld()->GetTimerManager().SetTimer(FrightenedModeTimer, this, &ATestGridGameMode::ChaseMode, 20.0f, false);
+	//different states to retourn to
+	if (wasChaseMode){
+		GetWorld()->GetTimerManager().UnPauseTimer(ChaseModeTimer);
+		ChaseMode();
+	}
+	else {
+		GetWorld()->GetTimerManager().UnPauseTimer(ScatterModeTimer);
+		ScatterMode();
+	}
+}
+
+
+
+void ATestGridGameMode::ScatterMode()
+{
+	CurrentState = EState::Scatter;
+	Scatter_count += 1;
+
+	//setting the timer for the end of the scatter mode
+	//GetWorld()->GetTimerManager().SetTimer(ScatterModeTimer, this, &ATestGridGameMode::ChaseMode, 7.0f, false);
+	
+				
+}
+
+//to be implemented
+void ATestGridGameMode::ChaseMode()
+{
+}
+
+
+

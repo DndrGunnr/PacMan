@@ -11,6 +11,8 @@
     <None Include="..\..\Source\PacmanGridEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
@@ -84,6 +86,9 @@
     <ClCompile Include="..\..\Source\PacmanGrid\Private\PointNode.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\PowerNode.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PacmanGrid\Private\TeleportNode.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
@@ -124,6 +129,9 @@
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\PointNode.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\PowerNode.h">
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\TeleportNode.h">

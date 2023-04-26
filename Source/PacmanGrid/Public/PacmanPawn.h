@@ -7,8 +7,11 @@
 #include "GridGenerator.h"
 #include "GridPlayerController.h"
 #include "PointNode.h"
+#include "PowerNode.h"
 #include "GridBaseNode.h"
+#include "TestGridGameMode.h"
 #include "PacmanPawn.generated.h"
+
 
 /**
  * 
@@ -28,6 +31,7 @@ public:
 	virtual	void OnClick() override;
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
 
 protected:
 	virtual void BeginPlay() override;
@@ -35,5 +39,4 @@ protected:
 	virtual void SetTargetNode(AGridBaseNode* Node) override;
 	virtual void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
-	
 };

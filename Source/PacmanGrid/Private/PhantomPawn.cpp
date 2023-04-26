@@ -77,3 +77,24 @@ void APhantomPawn::SetGhostTarget()
 		this->SetNextNodeByDir(TheGridGen->GetThreeDOfTwoDVector(PossibleNode->GetGridPosition() - this->GetLastNodeCoords()), true);
 	}
 }
+
+void APhantomPawn::SetFrightened(bool Frightened)
+{
+	bIsFrightened = Frightened;
+}
+
+void APhantomPawn::SetEaten(bool Eaten)
+{
+	bIsEaten = Eaten;
+}
+
+bool APhantomPawn::IsFrightened() const
+{
+	return bIsFrightened;
+}
+
+bool APhantomPawn::IsEaten() const
+{
+	return bIsEaten;
+}
+

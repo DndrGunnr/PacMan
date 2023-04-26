@@ -10,6 +10,13 @@
 #include "GameFramework/GameMode.h"
 #include "TestGridGameMode.generated.h"
 
+UENUM()
+enum EState
+{
+	Scatter,
+	Chase,
+	Frightened
+};
 /**
  * 
  */
@@ -33,15 +40,54 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<AInky> InkyClass;
 
+	//refererence to the ghosts
 	UPROPERTY(VisibleAnywhere)
-	ABlinky* BlinkyPawn;
+	ABlinky* BlinkyPtr;
 
 	UPROPERTY(VisibleAnywhere)
-		AInky* InkyPawn;
+	AInky* InkyPtr;
+	//reference to the pacman
+	UPROPERTY(VisibleAnywhere)
+	AGridPawn* PacmanPtr;
+
+	UPROPERTY(VisibleAnywhere)
+		TEnumAsByte<EState> CurrentState;
 
 	ATestGridGameMode();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
+
+	// functions of the state machine
+	void FrightenedMode(bool);
+	void EndingFrightenedMode();
+	void ScatterMode();
+	void ChaseMode();
+
+
+	//time constants
+	float PowerNode_time;
+	float Scatter_time_1;
+	float Scatter_time_2;
+	float Chase_time;
+
+	//counting variables
+	//the scatter mode is repeated only 4 times
+	int16 Scatter_count;
+	//TODO
+
+	//used to keep track of the state before frightened mode
+	bool wasChaseMode;
+
+
+
+
+
+private:
+	// timer handles
+	FTimerHandle FrightenedModeTimer;
+	FTimerHandle ScatterModeTimer;
+	FTimerHandle ChaseModeTimer;
+	// state machine
+
 };

@@ -56,6 +56,8 @@ protected:
 	float CurrentMovementSpeed = 100.0f;
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float NormalMovementSpeed = 100.0f;
+	UPROPERTY(EditAnywhere, Category="Movement")
+	float PowerMovementSpeed = 200.0f;
 	UPROPERTY(EditAnywhere)
 	float AcceptedDistance = 4.f;
 
