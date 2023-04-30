@@ -10,12 +10,15 @@
 #include "GameFramework/GameMode.h"
 #include "TestGridGameMode.generated.h"
 
+class Blinky;
+
 UENUM()
 enum EState
 {
 	Scatter,
 	Chase,
-	Frightened
+	Frightened,
+	Eaten
 };
 /**
  * 
@@ -60,9 +63,11 @@ public:
 
 	// functions of the state machine
 	void FrightenedMode(bool);
-	void EndingFrightenedMode();
 	void ScatterMode();
 	void ChaseMode();
+
+	//eaten ghosts must return to their home
+	void EatenMode();
 
 
 	//time constants

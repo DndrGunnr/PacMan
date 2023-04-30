@@ -9,12 +9,16 @@
 #include "Components/BoxComponent.h"
 #include "GridPawn.generated.h"
 
+
+
 UCLASS()
 class PACMANGRID_API AGridPawn : public APawn
 {
 	GENERATED_BODY()
 
 public:
+
+
 	// Sets default values for this pawn's properties
 	AGridPawn();
 	virtual void SetVerticalInput(float AxisValue);

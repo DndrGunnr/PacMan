@@ -50,8 +50,8 @@ void AGridPawn::BeginPlay()
 	Collider->OnComponentBeginOverlap.AddDynamic(this, &AGridPawn::OnOverlapBegin);
 
 	//teleport setUp
-	leftTp= *(GridGenTMap.Find(FVector2D(16, 0)));
-	rightTp = *(GridGenTMap.Find(FVector2D(16, 27)));
+	leftTp= *(GridGenTMap.Find(FVector2D(18, 0)));
+	rightTp = *(GridGenTMap.Find(FVector2D(18, 27)));
 
 }
 
@@ -117,20 +117,20 @@ void AGridPawn::OnNodeReached(){
 
 	//teleport check
 	if (leftTp == LastNode && LastValidInputDirection == FVector(0, -1, 0)){
-		LastNode = *GridGenTMap.Find(FVector2D(16, 27));
-		SetNextNode(*(GridGenTMap.Find(FVector2D(16, 26))));
+		LastNode = *GridGenTMap.Find(FVector2D(18, 27));
+		SetNextNode(*(GridGenTMap.Find(FVector2D(18, 26))));
 		SetTargetNode(NextNode);
 		//TeleportTo(rightTp, FRotator(0, 0, 0)); doesn't work
-		SetActorLocation(FVector(1650.0f, 2750.0f, GetActorLocation().Z));
+		SetActorLocation(FVector(1850.0f, 2750.0f, GetActorLocation().Z));
 	}
 		
 
 	if (rightTp == LastNode && LastValidInputDirection == FVector(0, 1, 0)){
-		LastNode = *GridGenTMap.Find(FVector2D(16, 0));
-		SetNextNode(*(GridGenTMap.Find(FVector2D(16, 1))));
+		LastNode = *GridGenTMap.Find(FVector2D(18, 0));
+		SetNextNode(*(GridGenTMap.Find(FVector2D(18, 1))));
 		SetTargetNode(NextNode);
 		//TeleportTo(leftTp, FRotator(0, 0, 0)); doesn't work
-		SetActorLocation(FVector(1650.0f, 50.0f, GetActorLocation().Z));
+		SetActorLocation(FVector(1850.0f, 50.0f, GetActorLocation().Z));
 	}
 }
 

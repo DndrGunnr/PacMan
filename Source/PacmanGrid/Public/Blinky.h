@@ -6,6 +6,7 @@
 #include "PhantomPawn.h"
 #include "Blinky.generated.h"
 
+
 /**
  * 
  */
@@ -17,4 +18,13 @@ class PACMANGRID_API ABlinky : public APhantomPawn
 
 public:
 	ABlinky();
+
+	void BeginPlay();
+
+
+	void setScatterTarget() override;
+private:
+	UPROPERTY(VisibleAnywhere)
+		AGridBaseNode* ScatterTarget;
+	
 };

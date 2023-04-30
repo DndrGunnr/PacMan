@@ -40,8 +40,8 @@ void ATestGridGameMode::BeginPlay()
 		GField = GetWorld()->SpawnActor<AGridGenerator>(GridGeneratorClass, GridPos, FRotationMatrix::MakeFromX(FVector(0, 0, 0)).Rotator());
 	};
 
-	BlinkyPtr = GetWorld()->SpawnActor<ABlinky>(BlinkyClass, FVector((100 * 19) + 50, (100 * 13) + 50, 5.0f), FRotator(0, 0, 0));
-	InkyPtr = GetWorld()->SpawnActor<AInky>(InkyClass, FVector((100 * 19) + 50, (100 * 15) + 50, 5.0f), FRotator(0, 0, 0));
+	BlinkyPtr = GetWorld()->SpawnActor<ABlinky>(BlinkyClass, FVector((100 * 21) + 50, (100 * 13) + 50, 5.0f), FRotator(0, 0, 0));
+	InkyPtr = GetWorld()->SpawnActor<AInky>(InkyClass, FVector((100 * 21) + 50, (100 * 15) + 50, 5.0f), FRotator(0, 0, 0));
 	CurrentState=EState::Scatter;
 	ScatterMode();
 }
@@ -74,17 +74,38 @@ void ATestGridGameMode::FrightenedMode(bool)
 
 void ATestGridGameMode::ScatterMode()
 {
+	//Debug message
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Scatter Mode"));
 	CurrentState = EState::Scatter;
 	Scatter_count += 1;
+	wasChaseMode = false;
 
-	//setting the timer for the end of the scatter mode
-	//GetWorld()->GetTimerManager().SetTimer(ScatterModeTimer, this, &ATestGridGameMode::ChaseMode, 7.0f, false);
-	
-				
+	//signaling ghost pawn to revert direction
+	BlinkyPtr->flipDirection();
+	InkyPtr->flipDirection();
+
+
+	//the scatter time changes after the first 2 scatter modes
+	if (Scatter_count < 3)
+		GetWorld()->GetTimerManager().SetTimer(ScatterModeTimer, this, &ATestGridGameMode::ChaseMode, Scatter_time_1, false);
+	else if (Scatter_count == 3 || Scatter_count == 4)
+		GetWorld()->GetTimerManager().SetTimer(ScatterModeTimer, this, &ATestGridGameMode::ChaseMode, Scatter_time_2, false);
 }
 
 //to be implemented
 void ATestGridGameMode::ChaseMode()
+{//Debug message
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Chase Mode"));
+	CurrentState = EState::Chase;
+	wasChaseMode = true;
+	//signaling ghost pawn to change their behaviour
+	BlinkyPtr->flipDirection();
+	InkyPtr->flipDirection();
+	//setting the timer for the end of the chase mode
+	GetWorld()->GetTimerManager().SetTimer(ChaseModeTimer, this, &ATestGridGameMode::ScatterMode, Chase_time, false);
+}
+
+void ATestGridGameMode::EatenMode()
 {
 }
 

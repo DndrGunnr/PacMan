@@ -4,6 +4,7 @@
 #include "PhantomPawn.h"
 #include "PacmanPawn.h"
 #include "Kismet/GameplayStatics.h"
+#include "TestGridGameMode.h"
 
 APhantomPawn::APhantomPawn()
 {
@@ -35,12 +36,27 @@ void APhantomPawn::OnNodeReached()
 	Super::OnNodeReached();
 }
 
+
+void APhantomPawn::flipDirection()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("direction flipped")));
+	LastValidInputDirection = -LastValidInputDirection;
+}
+
+void APhantomPawn::set_FrightenedTarget()
+{
+}
+
 void APhantomPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	if (this->GetTargetNode() == nullptr)
 	{
-		SetGhostTarget();
+		if (GameMode->CurrentState == EState::Chase)
+			SetChaseTarget();
+		else if (GameMode->CurrentState == EState::Scatter)
+			SetScatterTarget();
+		
 	}
 }
 
@@ -59,7 +75,7 @@ AGridBaseNode* APhantomPawn::GetPlayerRelativeTarget()
 	return Player->GetLastNode();
 }
 
-void APhantomPawn::SetGhostTarget()
+void APhantomPawn::SetChaseTarget()
 {
 	const AGridBaseNode* Target = GetPlayerRelativeTarget();
 	if (!Target)
@@ -78,23 +94,9 @@ void APhantomPawn::SetGhostTarget()
 	}
 }
 
-void APhantomPawn::SetFrightened(bool Frightened)
+void APhantomPawn::setScatterTarget()
 {
-	bIsFrightened = Frightened;
+	//overridden in child class
 }
 
-void APhantomPawn::SetEaten(bool Eaten)
-{
-	bIsEaten = Eaten;
-}
-
-bool APhantomPawn::IsFrightened() const
-{
-	return bIsFrightened;
-}
-
-bool APhantomPawn::IsEaten() const
-{
-	return bIsEaten;
-}
 

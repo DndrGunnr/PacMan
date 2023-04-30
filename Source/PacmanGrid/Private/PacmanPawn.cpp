@@ -2,8 +2,8 @@
 
 
 #include "PacmanPawn.h"
-#include "TestGridGameMode.h"
-#include "GridPawn.h"
+#include "TestGridGameMode.h"	
+
 
 APacmanPawn::APacmanPawn()
 {
@@ -15,8 +15,8 @@ APacmanPawn::APacmanPawn()
 	//   viene premuto uno dei tasti W-A-S-D )
 	LastInputDirection = FVector(0, 0, 0);
 	LastValidInputDirection = FVector(0, 0, 0);
-	////posizione iniziale  del pawn nelle coordinate di griglia (1,1)
-	CurrentGridCoords = FVector2D(1, 1);
+	////posizione iniziale  del pawn nelle coordinate di griglia (9,13)
+	CurrentGridCoords = FVector2D(9, 13);
 }
 
 void APacmanPawn::Tick(float DeltaTime)

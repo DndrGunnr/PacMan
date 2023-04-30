@@ -15,30 +15,26 @@ class APacmanPawn;
 #endif
 #define PACMANGRID_PhantomPawn_generated_h
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_SPARSE_DATA
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_RPC_WRAPPERS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_SPARSE_DATA
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS \
  \
-	DECLARE_FUNCTION(execIsEaten); \
-	DECLARE_FUNCTION(execIsFrightened); \
-	DECLARE_FUNCTION(execSetEaten); \
-	DECLARE_FUNCTION(execSetFrightened); \
+	DECLARE_FUNCTION(execsetScatterTarget); \
+	DECLARE_FUNCTION(execSetGhostTarget); \
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
 	DECLARE_FUNCTION(execGetPlayer);
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
  \
-	DECLARE_FUNCTION(execIsEaten); \
-	DECLARE_FUNCTION(execIsFrightened); \
-	DECLARE_FUNCTION(execSetEaten); \
-	DECLARE_FUNCTION(execSetFrightened); \
+	DECLARE_FUNCTION(execsetScatterTarget); \
+	DECLARE_FUNCTION(execSetGhostTarget); \
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
 	DECLARE_FUNCTION(execGetPlayer);
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPhantomPawn(); \
 	friend struct Z_Construct_UClass_APhantomPawn_Statics; \
@@ -47,7 +43,7 @@ public: \
 	DECLARE_SERIALIZER(APhantomPawn)
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_INCLASS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_INCLASS \
 private: \
 	static void StaticRegisterNativesAPhantomPawn(); \
 	friend struct Z_Construct_UClass_APhantomPawn_Statics; \
@@ -56,7 +52,7 @@ public: \
 	DECLARE_SERIALIZER(APhantomPawn)
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_STANDARD_CONSTRUCTORS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API APhantomPawn(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(APhantomPawn) \
@@ -69,7 +65,7 @@ private: \
 public:
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API APhantomPawn(APhantomPawn&&); \
@@ -80,25 +76,25 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APhantomPawn)
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_12_PROLOG
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_GENERATED_BODY_LEGACY \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_17_PROLOG
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_SPARSE_DATA \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_RPC_WRAPPERS \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_INCLASS \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_STANDARD_CONSTRUCTORS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_SPARSE_DATA \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_INCLASS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_GENERATED_BODY \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_SPARSE_DATA \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_INCLASS_NO_PURE_DECLS \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_15_ENHANCED_CONSTRUCTORS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_SPARSE_DATA \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_INCLASS_NO_PURE_DECLS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

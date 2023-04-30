@@ -3,7 +3,7 @@
 
 #include "GridGenerator.h"
 
-constexpr int MapSizeX = 31;
+constexpr int MapSizeX = 36;
 // la y contiene 29 elementi (+ il carattere di fine stringa)
 constexpr int MapSizeY = 29;
 
@@ -25,6 +25,8 @@ constexpr int MapSizeY = 29;
 // . - Point
 
 static char Map[MapSizeX][MapSizeY] = {
+	"############################",
+	"############################",
 	"############################",
 	"#..........................#",
 	"#.##########.##.##########.#",
@@ -55,6 +57,9 @@ static char Map[MapSizeX][MapSizeY] = {
 	"#B####.#####.##.#####.####B#",
 	"#.####.#####.##.#####.####.#",
 	"#............##............#",
+	"############################",
+	"############################",
+	"############################",
 	"############################",
 };
 

@@ -13,10 +13,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PACMANGRID_TestGridGameMode_generated_h
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_SPARSE_DATA
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_RPC_WRAPPERS
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_RPC_WRAPPERS_NO_PURE_DECLS
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_INCLASS_NO_PURE_DECLS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_SPARSE_DATA
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_RPC_WRAPPERS
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_RPC_WRAPPERS_NO_PURE_DECLS
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesATestGridGameMode(); \
 	friend struct Z_Construct_UClass_ATestGridGameMode_Statics; \
@@ -25,7 +25,7 @@ public: \
 	DECLARE_SERIALIZER(ATestGridGameMode)
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_INCLASS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_INCLASS \
 private: \
 	static void StaticRegisterNativesATestGridGameMode(); \
 	friend struct Z_Construct_UClass_ATestGridGameMode_Statics; \
@@ -34,7 +34,7 @@ public: \
 	DECLARE_SERIALIZER(ATestGridGameMode)
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_STANDARD_CONSTRUCTORS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ATestGridGameMode(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ATestGridGameMode) \
@@ -47,7 +47,7 @@ private: \
 public:
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_ENHANCED_CONSTRUCTORS \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API ATestGridGameMode(ATestGridGameMode&&); \
@@ -58,25 +58,25 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ATestGridGameMode)
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_23_PROLOG
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_GENERATED_BODY_LEGACY \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_PROLOG
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_SPARSE_DATA \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_RPC_WRAPPERS \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_INCLASS \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_STANDARD_CONSTRUCTORS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_SPARSE_DATA \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_RPC_WRAPPERS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_INCLASS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_GENERATED_BODY \
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_SPARSE_DATA \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_INCLASS_NO_PURE_DECLS \
-	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_26_ENHANCED_CONSTRUCTORS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_SPARSE_DATA \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_INCLASS_NO_PURE_DECLS \
+	FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_29_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -90,5 +90,6 @@ template<> PACMANGRID_API UClass* StaticClass<class ATestGridGameMode>();
 #define FOREACH_ENUM_ESTATE(op) \
 	op(Scatter) \
 	op(Chase) \
-	op(Frightened) 
+	op(Frightened) \
+	op(Eaten) 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

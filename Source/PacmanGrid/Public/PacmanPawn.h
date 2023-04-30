@@ -9,7 +9,6 @@
 #include "PointNode.h"
 #include "PowerNode.h"
 #include "GridBaseNode.h"
-#include "TestGridGameMode.h"
 #include "PacmanPawn.generated.h"
 
 
