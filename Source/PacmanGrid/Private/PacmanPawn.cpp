@@ -110,9 +110,19 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 
 
 		//asyncronous state change ,TODO: implement succesful wasChase condition
-		GameMode->FrightenedMode(true);
-		
-		
-
+		GameMode->FrightenedMode();
 	}
+	//overlapping of ghost node
+	const auto PhantomPawn = Cast<APhantomPawn>(OtherActor);
+	if (PhantomPawn && (GameMode->CurrentState == Chase || GameMode->CurrentState == Scatter) && !(PhantomPawn->GetIsEaten())) {
+		Collider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		GetWorld()->GetTimerManager().SetTimer(CollisionTimerHandle, this, &APacmanPawn::ActivateCollision, CollisionTimer, false);
+		//TODO: implement pacman death logic
+	}
+	else if (PhantomPawn && (GameMode->CurrentState == Frightened) && !(PhantomPawn->GetIsEaten())) {
+		PhantomPawn->SetIsEaten(true);
+		PhantomPawn->EatenMode();
+		//TODO: implement score logic
+	}
+	
 }

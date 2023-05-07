@@ -417,6 +417,11 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 #endif
 		static void NewProp_CanMove_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_CanMove;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsEaten_MetaData[];
+#endif
+		static void NewProp_bIsEaten_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsEaten;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -560,6 +565,17 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		((AGridPawn*)Obj)->CanMove = 1;
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove = { "CanMove", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AGridPawn), &Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_SetBit, METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_MetaData[] = {
+		{ "Category", "GridPawn" },
+		{ "ModuleRelativePath", "Public/GridPawn.h" },
+	};
+#endif
+	void Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_SetBit(void* Obj)
+	{
+		((AGridPawn*)Obj)->bIsEaten = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten = { "bIsEaten", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AGridPawn), &Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_SetBit, METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGridPawn_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_LastInputDirection,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_LastValidInputDirection,
@@ -579,6 +595,7 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_StaticMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_Collider,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AGridPawn_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AGridPawn>::IsAbstract,
@@ -616,9 +633,9 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AGridPawn, AGridPawn::StaticClass, TEXT("AGridPawn"), &Z_Registration_Info_UClass_AGridPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGridPawn), 1029272312U) },
+		{ Z_Construct_UClass_AGridPawn, AGridPawn::StaticClass, TEXT("AGridPawn"), &Z_Registration_Info_UClass_AGridPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGridPawn), 2374220199U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_952979022(TEXT("/Script/PacmanGrid"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_2995005008(TEXT("/Script/PacmanGrid"),
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

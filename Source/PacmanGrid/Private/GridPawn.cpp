@@ -74,6 +74,11 @@ void AGridPawn::OnClick()
 {
 }
 
+void AGridPawn::ActivateCollision()
+{
+	//TODO: Collision handling
+}
+
 void AGridPawn::HandleMovement()
 {
 	MoveToCurrentTargetNode();
@@ -91,6 +96,16 @@ void AGridPawn::HandleMovement()
 void AGridPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+bool AGridPawn::GetIsEaten() const
+{
+	return bIsEaten;
+}
+
+void AGridPawn::SetIsEaten(bool bNewIsEaten)
+{
+	bIsEaten = bNewIsEaten;
 }
 
 void AGridPawn::MoveToCurrentTargetNode()

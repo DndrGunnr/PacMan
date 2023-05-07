@@ -17,8 +17,7 @@ enum EState
 {
 	Scatter,
 	Chase,
-	Frightened,
-	Eaten
+	Frightened
 };
 /**
  * 
@@ -56,25 +55,30 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		TEnumAsByte<EState> CurrentState;
 
+	int8 flash_count;
+
+	bool bIsFlashing;
+
+
 	ATestGridGameMode();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	// functions of the state machine
-	void FrightenedMode(bool);
+	void FrightenedMode();
+	void FlashingFrightenedMode();
 	void ScatterMode();
 	void ChaseMode();
 
-	//eaten ghosts must return to their home
-	void EatenMode();
-
-
 	//time constants
 	float PowerNode_time;
+	float Fright_time;
 	float Scatter_time_1;
 	float Scatter_time_2;
 	float Chase_time;
+
+	
 
 	//counting variables
 	//the scatter mode is repeated only 4 times
@@ -88,11 +92,13 @@ public:
 
 
 
+
 private:
 	// timer handles
 	FTimerHandle FrightenedModeTimer;
 	FTimerHandle ScatterModeTimer;
 	FTimerHandle ChaseModeTimer;
-	// state machine
+	FTimerHandle FlashingTimer;
+
 
 };

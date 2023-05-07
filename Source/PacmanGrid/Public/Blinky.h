@@ -22,7 +22,12 @@ public:
 	void BeginPlay();
 
 
-	void setScatterTarget() override;
+	void SetScatterTarget() override;
+
+	void SetChaseTarget() override;
+
+	void SetEatenTarget() override;
+
 private:
 	UPROPERTY(VisibleAnywhere)
 		AGridBaseNode* ScatterTarget;

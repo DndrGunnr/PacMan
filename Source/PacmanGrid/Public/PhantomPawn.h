@@ -22,6 +22,28 @@ public:
 	// Sets default values for this pawn's properties
 	APhantomPawn();
 
+
+
+	//frightened meshes
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* StaticMeshBlue;
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* StaticMeshWhite;
+
+	//eaten meshes
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* StaticMeshLeftEye;
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* StaticMeshRightEye;
+	//eaten asyinchronous state
+	UFUNCTION()
+		void EatenMode();
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -33,7 +55,6 @@ protected:
 
 	bool bIsFrightened;
 
-	bool bIsEaten;
 
 	//movement speed
 	UPROPERTY(EditAnywhere, Category = "Movement")
@@ -48,14 +69,14 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 		float EatenGhostSpeed;
 	//To Do: Add logic for elroy mode
+	UPROPERTY(VisibleAnywhere)
+		AGridBaseNode* RespawnTarget;
 
-	//each ghost state might differ from the gamemode (ex. eaten state not synchronous)
-	enum EState Ghost_State;
 
 	
 
-	//this does not need to be virtual becouse it is the same for all ghosts
-	void set_FrightenedTarget();
+
+
 
 	void set_ChaseSpeed();
 
@@ -74,6 +95,10 @@ private:
 	UPROPERTY(VisibleAnywhere)
 		AGridPawn* GridPawn;
 
+	FTimerHandle FlashTimer;
+
+	float Flash_time;
+
 public:
 	virtual void Tick(float DeltaTime) override;
 	UFUNCTION()
@@ -83,15 +108,36 @@ public:
 	UFUNCTION()
 		virtual AGridBaseNode* GetPlayerRelativeTarget();
 	UFUNCTION()
-	void SetGhostTarget();
+	virtual void SetChaseTarget();
 	UFUNCTION()
-	virtual	void setScatterTarget();
+	virtual	void SetScatterTarget();
+	//this does not need to be virtual becouse it is the same for all ghosts
+	UFUNCTION()
+	void SetFrightenedTarget();
+	UFUNCTION()
+	virtual void SetEatenTarget();
 
-	void to_FrightenedMode();
 
 	//used to flip the direction of the ghost on state changes
 	void flipDirection();
 
 	//random direction generator
+
+	struct FRandomStream RandomGenerator;
+
+	int32 RandomSeed;
+	int32 RandMIN;
+	int32 RandMAX;
+
+	TStaticArray<FVector, 4> Direction_vector;
+
+	//functions for flashing mode
+	void VisibleWhite();
+
+	void VisibleBlue();
+
+	void ResetOriginalColor();
+
+
 
 };

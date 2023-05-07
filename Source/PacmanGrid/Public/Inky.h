@@ -13,9 +13,22 @@ UCLASS()
 class PACMANGRID_API AInky : public APhantomPawn
 {
 	GENERATED_BODY()
-	virtual AGridBaseNode* GetPlayerRelativeTarget() override;
+		virtual AGridBaseNode* GetPlayerRelativeTarget() override;
 
 public:
 	AInky();
-	
+
+	void BeginPlay();
+
+
+	void SetScatterTarget() override;
+
+	void SetChaseTarget() override;
+
+	void SetEatenTarget() override;
+
+private:
+	UPROPERTY(VisibleAnywhere)
+		AGridBaseNode* ScatterTarget;
+
 };

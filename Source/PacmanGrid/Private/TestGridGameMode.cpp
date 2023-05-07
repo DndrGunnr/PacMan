@@ -9,6 +9,7 @@ ATestGridGameMode::ATestGridGameMode()
 	Scatter_time_1 = 7.0f;
 	Scatter_time_2 = 5.0f;
 	Chase_time = 20.0f;
+	Fright_time = 3.0f;
 	//starting in scatter mode
 	wasChaseMode = false;
 }
@@ -46,7 +47,7 @@ void ATestGridGameMode::BeginPlay()
 	ScatterMode();
 }
 
-void ATestGridGameMode::FrightenedMode(bool)
+void ATestGridGameMode::FrightenedMode()
 {
 	//must pause the timer of the previous state
 	if (wasChaseMode) {
@@ -55,12 +56,33 @@ void ATestGridGameMode::FrightenedMode(bool)
 	else {
 		GetWorld()->GetTimerManager().PauseTimer(ScatterModeTimer);
 	}
+	BlinkyPtr->flipDirection();
+	InkyPtr->flipDirection();
 	//updating the state of the game
 	CurrentState=EState::Frightened;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Frightened Mode"));
+	bIsFlashing = false;
+
+	BlinkyPtr->VisibleBlue();
+	InkyPtr->VisibleBlue();
+	//PinkyPtr->VisibleBlue();
+	//ClydePtr->VisibleBlue();
 	//setting the timer for the end of the frightened mode
-	GetWorld()->GetTimerManager().SetTimer(FrightenedModeTimer, this, &ATestGridGameMode::ChaseMode, 20.0f, false);
+	GetWorld()->GetTimerManager().SetTimer(FrightenedModeTimer, this, &ATestGridGameMode::FlashingFrightenedMode,Fright_time , false);
+
+}
+
+void ATestGridGameMode::FlashingFrightenedMode()
+{
+	bIsFlashing = true;
+	flash_count = 0;
+	BlinkyPtr->VisibleWhite();
+	InkyPtr->VisibleWhite();
+	//PinkyPtr->VisibleWhite();
+	//ClydePtr->VisibleWhite();
+
 	//different states to retourn to
-	if (wasChaseMode){
+	if (wasChaseMode) {
 		GetWorld()->GetTimerManager().UnPauseTimer(ChaseModeTimer);
 		ChaseMode();
 	}
@@ -79,6 +101,7 @@ void ATestGridGameMode::ScatterMode()
 	CurrentState = EState::Scatter;
 	Scatter_count += 1;
 	wasChaseMode = false;
+
 
 	//signaling ghost pawn to revert direction
 	BlinkyPtr->flipDirection();
@@ -105,9 +128,6 @@ void ATestGridGameMode::ChaseMode()
 	GetWorld()->GetTimerManager().SetTimer(ChaseModeTimer, this, &ATestGridGameMode::ScatterMode, Chase_time, false);
 }
 
-void ATestGridGameMode::EatenMode()
-{
-}
 
 
 

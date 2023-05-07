@@ -18,20 +18,26 @@ class APacmanPawn;
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_SPARSE_DATA
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS \
  \
-	DECLARE_FUNCTION(execsetScatterTarget); \
-	DECLARE_FUNCTION(execSetGhostTarget); \
+	DECLARE_FUNCTION(execSetEatenTarget); \
+	DECLARE_FUNCTION(execSetFrightenedTarget); \
+	DECLARE_FUNCTION(execSetScatterTarget); \
+	DECLARE_FUNCTION(execSetChaseTarget); \
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
-	DECLARE_FUNCTION(execGetPlayer);
+	DECLARE_FUNCTION(execGetPlayer); \
+	DECLARE_FUNCTION(execEatenMode);
 
 
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
  \
-	DECLARE_FUNCTION(execsetScatterTarget); \
-	DECLARE_FUNCTION(execSetGhostTarget); \
+	DECLARE_FUNCTION(execSetEatenTarget); \
+	DECLARE_FUNCTION(execSetFrightenedTarget); \
+	DECLARE_FUNCTION(execSetScatterTarget); \
+	DECLARE_FUNCTION(execSetChaseTarget); \
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
-	DECLARE_FUNCTION(execGetPlayer);
+	DECLARE_FUNCTION(execGetPlayer); \
+	DECLARE_FUNCTION(execEatenMode);
 
 
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_INCLASS_NO_PURE_DECLS \

@@ -99,13 +99,23 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	bool CanMove;
 
+	UPROPERTY(VisibleAnywhere)
+	bool bIsEaten;
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	bool GetIsEaten() const;
+	void SetIsEaten(bool bNewIsEaten);
 
 	// called on left mouse click (binding)
 	virtual void OnClick();
+
+	//multiple collisions handilng
+	FTimerHandle CollisionTimerHandle;
+	float CollisionTimer = 0.2f;
+	void ActivateCollision();
 
 };
