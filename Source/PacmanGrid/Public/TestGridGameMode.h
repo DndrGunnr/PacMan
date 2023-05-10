@@ -7,6 +7,8 @@
 #include "GridPawn.h"
 #include "Blinky.h"
 #include "Inky.h"
+#include "Pinky.h"
+#include "Clyde.h"
 #include "GameFramework/GameMode.h"
 #include "TestGridGameMode.generated.h"
 
@@ -42,12 +44,24 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<AInky> InkyClass;
 
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<APinky> PinkyClass;
+
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<AClyde> ClydeClass;
+
 	//refererence to the ghosts
 	UPROPERTY(VisibleAnywhere)
 	ABlinky* BlinkyPtr;
 
 	UPROPERTY(VisibleAnywhere)
 	AInky* InkyPtr;
+
+	UPROPERTY(VisibleAnywhere)
+	APinky* PinkyPtr;
+
+	UPROPERTY(VisibleAnywhere)
+	AClyde* ClydePtr;
 	//reference to the pacman
 	UPROPERTY(VisibleAnywhere)
 	AGridPawn* PacmanPtr;

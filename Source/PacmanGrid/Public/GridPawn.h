@@ -110,6 +110,9 @@ public:
 	bool GetIsEaten() const;
 	void SetIsEaten(bool bNewIsEaten);
 
+	//to obtain current coords 
+	FVector2D GetCurrentGridCoords() const;
+
 	// called on left mouse click (binding)
 	virtual void OnClick();
 

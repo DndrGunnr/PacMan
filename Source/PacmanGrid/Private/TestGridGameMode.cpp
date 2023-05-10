@@ -42,9 +42,11 @@ void ATestGridGameMode::BeginPlay()
 	};
 
 	BlinkyPtr = GetWorld()->SpawnActor<ABlinky>(BlinkyClass, FVector((100 * 21) + 50, (100 * 13) + 50, 5.0f), FRotator(0, 0, 0));
-	InkyPtr = GetWorld()->SpawnActor<AInky>(InkyClass, FVector((100 * 21) + 50, (100 * 15) + 50, 5.0f), FRotator(0, 0, 0));
+	InkyPtr = GetWorld()->SpawnActor<AInky>(InkyClass, FVector((100 * 18) + 50, (100 * 11) + 50, 5.0f), FRotator(0, 0, 0));
+	PinkyPtr = GetWorld()->SpawnActor<APinky>(PinkyClass, FVector((100 * 18) + 50, (100 * 13) + 50, 5.0f), FRotator(0, 0, 0));
+	ClydePtr = GetWorld()->SpawnActor<AClyde>(ClydeClass, FVector((100 * 18) + 50, (100 * 15) + 50, 5.0f), FRotator(0, 0, 0));
 	CurrentState=EState::Scatter;
-	ScatterMode();
+	GetWorld()->GetTimerManager().SetTimer(ScatterModeTimer, this, &ATestGridGameMode::ScatterMode, 3.0f , false);
 }
 
 void ATestGridGameMode::FrightenedMode()
@@ -58,6 +60,8 @@ void ATestGridGameMode::FrightenedMode()
 	}
 	BlinkyPtr->flipDirection();
 	InkyPtr->flipDirection();
+	PinkyPtr->flipDirection();
+	ClydePtr->flipDirection();
 	//updating the state of the game
 	CurrentState=EState::Frightened;
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Frightened Mode"));
@@ -65,8 +69,8 @@ void ATestGridGameMode::FrightenedMode()
 
 	BlinkyPtr->VisibleBlue();
 	InkyPtr->VisibleBlue();
-	//PinkyPtr->VisibleBlue();
-	//ClydePtr->VisibleBlue();
+	PinkyPtr->VisibleBlue();
+	ClydePtr->VisibleBlue();
 	//setting the timer for the end of the frightened mode
 	GetWorld()->GetTimerManager().SetTimer(FrightenedModeTimer, this, &ATestGridGameMode::FlashingFrightenedMode,Fright_time , false);
 
@@ -78,8 +82,8 @@ void ATestGridGameMode::FlashingFrightenedMode()
 	flash_count = 0;
 	BlinkyPtr->VisibleWhite();
 	InkyPtr->VisibleWhite();
-	//PinkyPtr->VisibleWhite();
-	//ClydePtr->VisibleWhite();
+	PinkyPtr->VisibleWhite();
+	ClydePtr->VisibleWhite();
 
 	//different states to retourn to
 	if (wasChaseMode) {
@@ -104,8 +108,11 @@ void ATestGridGameMode::ScatterMode()
 
 
 	//signaling ghost pawn to revert direction
+	
 	BlinkyPtr->flipDirection();
 	InkyPtr->flipDirection();
+	//PinkyPtr->flipDirection();
+	//ClydePtr->flipDirection();
 
 
 	//the scatter time changes after the first 2 scatter modes
@@ -124,6 +131,8 @@ void ATestGridGameMode::ChaseMode()
 	//signaling ghost pawn to change their behaviour
 	BlinkyPtr->flipDirection();
 	InkyPtr->flipDirection();
+	PinkyPtr->flipDirection();
+	ClydePtr->flipDirection();
 	//setting the timer for the end of the chase mode
 	GetWorld()->GetTimerManager().SetTimer(ChaseModeTimer, this, &ATestGridGameMode::ScatterMode, Chase_time, false);
 }

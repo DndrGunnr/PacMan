@@ -18,6 +18,21 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_AGridPawn_NoRegister();
 // End Cross Module References
+	DEFINE_FUNCTION(APhantomPawn::execSetIsLeavingHouse)
+	{
+		P_GET_UBOOL(Z_Param_newIsLeavingHouse);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetIsLeavingHouse(Z_Param_newIsLeavingHouse);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(APhantomPawn::execLeaveHouse)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->LeaveHouse();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(APhantomPawn::execSetEatenTarget)
 	{
 		P_FINISH;
@@ -82,9 +97,11 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 			{ "EatenMode", &APhantomPawn::execEatenMode },
 			{ "GetPlayer", &APhantomPawn::execGetPlayer },
 			{ "GetPlayerRelativeTarget", &APhantomPawn::execGetPlayerRelativeTarget },
+			{ "LeaveHouse", &APhantomPawn::execLeaveHouse },
 			{ "SetChaseTarget", &APhantomPawn::execSetChaseTarget },
 			{ "SetEatenTarget", &APhantomPawn::execSetEatenTarget },
 			{ "SetFrightenedTarget", &APhantomPawn::execSetFrightenedTarget },
+			{ "SetIsLeavingHouse", &APhantomPawn::execSetIsLeavingHouse },
 			{ "SetScatterTarget", &APhantomPawn::execSetScatterTarget },
 			{ "SetSpeed", &APhantomPawn::execSetSpeed },
 		};
@@ -178,6 +195,28 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "LeaveHouse", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APhantomPawn_LeaveHouse()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_APhantomPawn_SetChaseTarget_Statics
 	{
 #if WITH_METADATA
@@ -243,6 +282,43 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_SetFrightenedTarget_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics
+	{
+		struct PhantomPawn_eventSetIsLeavingHouse_Parms
+		{
+			bool newIsLeavingHouse;
+		};
+		static void NewProp_newIsLeavingHouse_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_newIsLeavingHouse;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::NewProp_newIsLeavingHouse_SetBit(void* Obj)
+	{
+		((PhantomPawn_eventSetIsLeavingHouse_Parms*)Obj)->newIsLeavingHouse = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::NewProp_newIsLeavingHouse = { "newIsLeavingHouse", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(PhantomPawn_eventSetIsLeavingHouse_Parms), &Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::NewProp_newIsLeavingHouse_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::NewProp_newIsLeavingHouse,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "SetIsLeavingHouse", nullptr, nullptr, sizeof(Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::PhantomPawn_eventSetIsLeavingHouse_Parms), Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -356,6 +432,16 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_GridPawn_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_GridPawn;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsInHouse_MetaData[];
+#endif
+		static void NewProp_bIsInHouse_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsInHouse;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsLeavingHouse_MetaData[];
+#endif
+		static void NewProp_bIsLeavingHouse_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsLeavingHouse;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -368,9 +454,11 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		{ &Z_Construct_UFunction_APhantomPawn_EatenMode, "EatenMode" }, // 1854551801
 		{ &Z_Construct_UFunction_APhantomPawn_GetPlayer, "GetPlayer" }, // 448858372
 		{ &Z_Construct_UFunction_APhantomPawn_GetPlayerRelativeTarget, "GetPlayerRelativeTarget" }, // 1049353664
+		{ &Z_Construct_UFunction_APhantomPawn_LeaveHouse, "LeaveHouse" }, // 2223311519
 		{ &Z_Construct_UFunction_APhantomPawn_SetChaseTarget, "SetChaseTarget" }, // 844093314
 		{ &Z_Construct_UFunction_APhantomPawn_SetEatenTarget, "SetEatenTarget" }, // 351362860
 		{ &Z_Construct_UFunction_APhantomPawn_SetFrightenedTarget, "SetFrightenedTarget" }, // 1714007769
+		{ &Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse, "SetIsLeavingHouse" }, // 3469255804
 		{ &Z_Construct_UFunction_APhantomPawn_SetScatterTarget, "SetScatterTarget" }, // 2369553349
 		{ &Z_Construct_UFunction_APhantomPawn_SetSpeed, "SetSpeed" }, // 1205749200
 	};
@@ -471,6 +559,28 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APhantomPawn_Statics::NewProp_GridPawn = { "GridPawn", nullptr, (EPropertyFlags)0x0040000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APhantomPawn, GridPawn), Z_Construct_UClass_AGridPawn_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APhantomPawn_Statics::NewProp_GridPawn_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APhantomPawn_Statics::NewProp_GridPawn_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsInHouse_MetaData[] = {
+		{ "Category", "PhantomPawn" },
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+	};
+#endif
+	void Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsInHouse_SetBit(void* Obj)
+	{
+		((APhantomPawn*)Obj)->bIsInHouse = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsInHouse = { "bIsInHouse", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(APhantomPawn), &Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsInHouse_SetBit, METADATA_PARAMS(Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsInHouse_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsInHouse_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsLeavingHouse_MetaData[] = {
+		{ "Category", "PhantomPawn" },
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+	};
+#endif
+	void Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsLeavingHouse_SetBit(void* Obj)
+	{
+		((APhantomPawn*)Obj)->bIsLeavingHouse = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsLeavingHouse = { "bIsLeavingHouse", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(APhantomPawn), &Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsLeavingHouse_SetBit, METADATA_PARAMS(Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsLeavingHouse_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsLeavingHouse_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APhantomPawn_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_StaticMeshBlue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_StaticMeshWhite,
@@ -483,6 +593,8 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_RespawnTarget,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_Player,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_GridPawn,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsInHouse,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsLeavingHouse,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APhantomPawn_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APhantomPawn>::IsAbstract,
@@ -520,9 +632,9 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APhantomPawn, APhantomPawn::StaticClass, TEXT("APhantomPawn"), &Z_Registration_Info_UClass_APhantomPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APhantomPawn), 1113158496U) },
+		{ Z_Construct_UClass_APhantomPawn, APhantomPawn::StaticClass, TEXT("APhantomPawn"), &Z_Registration_Info_UClass_APhantomPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APhantomPawn), 3445032176U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_2780631538(TEXT("/Script/PacmanGrid"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_2363093192(TEXT("/Script/PacmanGrid"),
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

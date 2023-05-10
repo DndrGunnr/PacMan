@@ -18,6 +18,8 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 	PACMANGRID_API UClass* Z_Construct_UClass_AGridGenerator_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_ABlinky_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_AInky_NoRegister();
+	PACMANGRID_API UClass* Z_Construct_UClass_APinky_NoRegister();
+	PACMANGRID_API UClass* Z_Construct_UClass_AClyde_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_AGridPawn_NoRegister();
 // End Cross Module References
 	static FEnumRegistrationInfo Z_Registration_Info_UEnum_EState;
@@ -105,6 +107,14 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 #endif
 		static const UECodeGen_Private::FClassPropertyParams NewProp_InkyClass;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PinkyClass_MetaData[];
+#endif
+		static const UECodeGen_Private::FClassPropertyParams NewProp_PinkyClass;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ClydeClass_MetaData[];
+#endif
+		static const UECodeGen_Private::FClassPropertyParams NewProp_ClydeClass;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_BlinkyPtr_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_BlinkyPtr;
@@ -112,6 +122,14 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_InkyPtr_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_InkyPtr;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PinkyPtr_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_PinkyPtr;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ClydePtr_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_ClydePtr;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PacmanPtr_MetaData[];
 #endif
@@ -170,6 +188,20 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 #endif
 	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyClass = { "InkyClass", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, InkyClass), Z_Construct_UClass_AInky_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyClass_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyClass_MetaData[] = {
+		{ "Category", "TestGridGameMode" },
+		{ "ModuleRelativePath", "Public/TestGridGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyClass = { "PinkyClass", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, PinkyClass), Z_Construct_UClass_APinky_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyClass_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydeClass_MetaData[] = {
+		{ "Category", "TestGridGameMode" },
+		{ "ModuleRelativePath", "Public/TestGridGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydeClass = { "ClydeClass", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, ClydeClass), Z_Construct_UClass_AClyde_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydeClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydeClass_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_BlinkyPtr_MetaData[] = {
 		{ "Category", "TestGridGameMode" },
 		{ "Comment", "//refererence to the ghosts\n" },
@@ -185,6 +217,20 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyPtr = { "InkyPtr", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, InkyPtr), Z_Construct_UClass_AInky_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyPtr_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyPtr_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyPtr_MetaData[] = {
+		{ "Category", "TestGridGameMode" },
+		{ "ModuleRelativePath", "Public/TestGridGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyPtr = { "PinkyPtr", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, PinkyPtr), Z_Construct_UClass_APinky_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyPtr_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyPtr_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr_MetaData[] = {
+		{ "Category", "TestGridGameMode" },
+		{ "ModuleRelativePath", "Public/TestGridGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr = { "ClydePtr", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, ClydePtr), Z_Construct_UClass_AClyde_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PacmanPtr_MetaData[] = {
 		{ "Category", "TestGridGameMode" },
@@ -206,8 +252,12 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_GField,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_BlinkyClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyClass,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyClass,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydeClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_BlinkyPtr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyPtr,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyPtr,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PacmanPtr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_CurrentState,
 	};
@@ -251,9 +301,9 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 		{ EState_StaticEnum, TEXT("EState"), &Z_Registration_Info_UEnum_EState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3665404223U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ATestGridGameMode, ATestGridGameMode::StaticClass, TEXT("ATestGridGameMode"), &Z_Registration_Info_UClass_ATestGridGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATestGridGameMode), 870531094U) },
+		{ Z_Construct_UClass_ATestGridGameMode, ATestGridGameMode::StaticClass, TEXT("ATestGridGameMode"), &Z_Registration_Info_UClass_ATestGridGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATestGridGameMode), 3815724489U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_550966593(TEXT("/Script/PacmanGrid"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_2772807454(TEXT("/Script/PacmanGrid"),
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::EnumInfo));

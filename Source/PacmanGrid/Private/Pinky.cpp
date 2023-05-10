@@ -2,6 +2,7 @@
 
 
 #include "Pinky.h"
+#include "TestGridGameMode.h"
 
 AGridBaseNode* APinky::GetPlayerRelativeTarget()
 {
@@ -10,17 +11,19 @@ AGridBaseNode* APinky::GetPlayerRelativeTarget()
 
 APinky::APinky()
 {
-	CurrentGridCoords = FVector2D(18, 14);
+	CurrentGridCoords = FVector2D(18, 13);
 	ScatterTarget = nullptr;
+	bIsInHouse = true;
+	bIsLeavingHouse = false;
 }
 
 void APinky::BeginPlay()
 {
 	Super::BeginPlay();
-	FVector2D BlinkyScatter = FVector2D(35, 2);
-	ScatterTarget = *GridGenTMap.Find(BlinkyScatter);
+	FVector2D PinkyScatter = FVector2D(35, 2);
+	ScatterTarget = *GridGenTMap.Find(PinkyScatter);
 	//SetNextNodeByDir(FVector(0, 0, 0), true);
-	//TODO: Set RespawnTarget
+
 
 
 }
@@ -40,6 +43,7 @@ void APinky::SetScatterTarget()
 	}
 }
 
+//Chase logic
 void APinky::SetChaseTarget()
 {
 	const AGridBaseNode* Target;
@@ -73,14 +77,31 @@ void APinky::SetChaseTarget()
 
 void APinky::SetEatenTarget() {
 
-	AGridBaseNode* PossibleNode = TheGridGen->GetClosestNodeFromMyCoordsToTargetCoords(this->GetLastNodeCoords(), RespawnTarget->GetGridPosition(), -(this->GetLastValidDirection()));
+	const AGridBaseNode* Target = *GridGenTMap.Find(FVector2D(21, 13));
 
-	const FVector Dimensions(60, 60, 20);
-	DrawDebugBox(GetWorld(), PossibleNode->GetTileCoordinates(), Dimensions, FColor::Red);
 
-	if (PossibleNode)
+	//once outside, the ghost goes to the center of the ghost house
+	if (CurrentGridCoords == FVector2D(21, 13))
 	{
-		this->SetNextNodeByDir(TheGridGen->GetThreeDOfTwoDVector(PossibleNode->GetGridPosition() - this->GetLastNodeCoords()), true);
+		SetTargetNode(*GridGenTMap.Find(FVector2D(18, 13)));
+
+	}
+	//once inside, the ghost is respawned and instantly kicked out of the ghost house
+	else if (CurrentGridCoords == FVector2D(18, 13))
+	{
+		ResetOriginalColor();
+		SetTargetNode(*GridGenTMap.Find(FVector2D(21, 13)));
+		bIsEaten = false;
+	}
+	//if the ghost is eaten, it will go to the ghost house
+	else {
+		AGridBaseNode* PossibleNode = TheGridGen->GetClosestNodeFromMyCoordsToTargetCoords(this->GetLastNodeCoords(), Target->GetGridPosition(), -(this->GetLastValidDirection()));
+		const FVector Dimensions(60, 60, 20);
+		DrawDebugBox(GetWorld(), PossibleNode->GetTileCoordinates(), Dimensions, FColor::Red);
+		if (PossibleNode)
+		{
+			this->SetNextNodeByDir(TheGridGen->GetThreeDOfTwoDVector(PossibleNode->GetGridPosition() - this->GetLastNodeCoords()), true);
+		}
 	}
 
 }

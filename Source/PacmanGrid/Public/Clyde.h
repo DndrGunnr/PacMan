@@ -9,9 +9,28 @@
 /**
  * 
  */
+
 UCLASS()
 class PACMANGRID_API AClyde : public APhantomPawn
 {
 	GENERATED_BODY()
-	
+
+		virtual AGridBaseNode* GetPlayerRelativeTarget() override;
+
+public:
+	AClyde();
+
+	void BeginPlay();
+
+
+	void SetScatterTarget() override;
+
+	void SetChaseTarget() override;
+
+	void SetEatenTarget() override;
+
+private:
+	UPROPERTY(VisibleAnywhere)
+		AGridBaseNode* ScatterTarget;
+
 };

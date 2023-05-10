@@ -59,26 +59,26 @@ void ABlinky::SetChaseTarget()
 		this->SetNextNodeByDir(TheGridGen->GetThreeDOfTwoDVector(PossibleNode->GetGridPosition() - this->GetLastNodeCoords()), true);
 	}
 }
-
+//function to allow eaten ghosts to respawn
 void ABlinky::SetEatenTarget() {
-	//ghost must return to ghost house
+	
 	const AGridBaseNode* Target = *GridGenTMap.Find(FVector2D(21,13));
-	//while the ghost is not outside the ghost house, it will move towards the ghost house
 
-	//once the ghost is outside the ghost house, it will move towards the ghost house door
+
+	//once outside, the ghost goes to the center of the ghost house
 	if (CurrentGridCoords == FVector2D(21, 13))
 	{			
 		SetTargetNode(*GridGenTMap.Find(FVector2D(19, 13)));
 		
 	}
-
+	//once inside, the ghost is respawned and instantly kicked out of the ghost house
 	else if (CurrentGridCoords == FVector2D(19, 13))
 	{
 		ResetOriginalColor();
 		SetTargetNode(*GridGenTMap.Find(FVector2D(21, 13)));
 		bIsEaten = false;
 	}
-		//once inside, the ghost instantly respawns
+	//if the ghost is eaten, it will go to the ghost house
 	else {
 		AGridBaseNode* PossibleNode = TheGridGen->GetClosestNodeFromMyCoordsToTargetCoords(this->GetLastNodeCoords(), Target->GetGridPosition(), -(this->GetLastValidDirection()));
 		const FVector Dimensions(60, 60, 20);

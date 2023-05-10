@@ -11,6 +11,11 @@ APhantomPawn::APhantomPawn()
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	ChaseGhostSpeed = 844.0f;
+	HouseGhostSpeed = 800.0f;
+	FrightenedGhostSpeed = 563.0f;
+	EatenGhostSpeed = 2000.0f;
+
 	StaticMeshBlue = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Blue Mesh"));
 	StaticMeshWhite = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("White Mesh"));
 
@@ -87,7 +92,7 @@ void APhantomPawn::OnNodeReached()
 void APhantomPawn::flipDirection()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("direction flipped")));
-	LastValidInputDirection = -LastValidInputDirection;
+	LastValidInputDirection = ( - 1)*LastValidInputDirection;
 }
 
 void APhantomPawn::VisibleWhite()
@@ -219,6 +224,17 @@ void APhantomPawn::SetFrightenedTarget()
 void APhantomPawn::SetEatenTarget()
 {
 	//overridden in child class
+}
+
+void APhantomPawn::LeaveHouse()
+{
+	//GetWorld()->GetTimerManager().SetTimer(HouseTimer);
+
+}
+
+void APhantomPawn::SetIsLeavingHouse(bool newIsLeavingHouse)
+{
+	bIsLeavingHouse = newIsLeavingHouse;
 }
 
 void APhantomPawn::SetChaseTarget()

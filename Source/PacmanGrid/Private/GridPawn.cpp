@@ -108,6 +108,11 @@ void AGridPawn::SetIsEaten(bool bNewIsEaten)
 	bIsEaten = bNewIsEaten;
 }
 
+FVector2D AGridPawn::GetCurrentGridCoords() const
+{
+	return CurrentGridCoords;
+}
+
 void AGridPawn::MoveToCurrentTargetNode()
 {
 	if (TargetNode == nullptr) return;

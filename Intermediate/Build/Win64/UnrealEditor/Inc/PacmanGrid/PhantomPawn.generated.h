@@ -18,6 +18,8 @@ class APacmanPawn;
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_SPARSE_DATA
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execSetIsLeavingHouse); \
+	DECLARE_FUNCTION(execLeaveHouse); \
 	DECLARE_FUNCTION(execSetEatenTarget); \
 	DECLARE_FUNCTION(execSetFrightenedTarget); \
 	DECLARE_FUNCTION(execSetScatterTarget); \
@@ -30,6 +32,8 @@ class APacmanPawn;
 
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execSetIsLeavingHouse); \
+	DECLARE_FUNCTION(execLeaveHouse); \
 	DECLARE_FUNCTION(execSetEatenTarget); \
 	DECLARE_FUNCTION(execSetFrightenedTarget); \
 	DECLARE_FUNCTION(execSetScatterTarget); \

@@ -68,24 +68,10 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 		float EatenGhostSpeed;
+
 	//To Do: Add logic for elroy mode
 	UPROPERTY(VisibleAnywhere)
 		AGridBaseNode* RespawnTarget;
-
-
-	
-
-
-
-
-	void set_ChaseSpeed();
-
-	void set_FrightenedSpeed();
-
-	void set_EatenSpeed();
-
-	void set_houseSpeed();
-
 
 
 private:
@@ -96,8 +82,11 @@ private:
 		AGridPawn* GridPawn;
 
 	FTimerHandle FlashTimer;
+	FTimerHandle HouseTimer;
 
 	float Flash_time;
+	
+
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -116,6 +105,15 @@ public:
 	void SetFrightenedTarget();
 	UFUNCTION()
 	virtual void SetEatenTarget();
+	UFUNCTION()
+	virtual void LeaveHouse();
+	UFUNCTION()
+	void SetIsLeavingHouse(bool newIsLeavingHouse); 
+
+	UPROPERTY(VisibleAnywhere)
+	bool bIsInHouse;
+	UPROPERTY(VisibleAnywhere)
+	bool bIsLeavingHouse;
 
 
 	//used to flip the direction of the ghost on state changes

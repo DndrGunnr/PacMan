@@ -59,6 +59,9 @@
     <ClCompile Include="..\..\Source\PacmanGrid\Private\Blinky.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\Clyde.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PacmanGrid\Private\GhostExitNode.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
@@ -92,6 +95,9 @@
     <ClCompile Include="..\..\Source\PacmanGrid\Private\Pinky.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\PMPointsGameInstance.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PacmanGrid\Private\PointNode.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
@@ -111,6 +117,9 @@
       <UniqueIdentifier>{488E724B-BC17-33CC-A6E9-4C8A0BEEAF6C}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\Blinky.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\Clyde.h">
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\GhostExitNode.h">
@@ -144,6 +153,9 @@
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\Pinky.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\PMPointsGameInstance.h">
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\PointNode.h">
