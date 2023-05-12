@@ -7,6 +7,7 @@
 #include "GridGenerator.h"
 #include "GameFramework/Pawn.h"
 #include "Components/BoxComponent.h"
+#include "PMPointsGameInstance.h"
 #include "GridPawn.generated.h"
 
 
@@ -37,6 +38,8 @@ public:
 	FVector2D GetLastNodeCoords() const;
 	UFUNCTION(BlueprintCallable)
 	FVector2D GetTargetNodeCoords() const;
+	UFUNCTION(BlueprintCallable)
+	void SetCurrentGridCoords(FVector2D newGridCoords);
 	//posizione dei due teleport
 	AGridBaseNode* leftTp;
 	AGridBaseNode* rightTp;
@@ -73,6 +76,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere)
 	AGridGenerator* TheGridGen;
+
+	UPROPERTY(EditAnywhere)
+	UPMPointsGameInstance* PointsGameInstance;
 
 	UPROPERTY(VisibleAnywhere)
 		TMap<FVector2D, AGridBaseNode*> GridGenTMap;

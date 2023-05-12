@@ -43,6 +43,14 @@ public:
 	UFUNCTION()
 		void EatenMode();
 
+	UFUNCTION()
+		void resetEatenGhostCounter();
+
+	UFUNCTION()
+		int8 getEatenGhostCounter();
+
+	UFUNCTION()
+		virtual void resetGhost();
 
 protected:
 	// Called when the game starts or when spawned
@@ -72,6 +80,9 @@ protected:
 	//To Do: Add logic for elroy mode
 	UPROPERTY(VisibleAnywhere)
 		AGridBaseNode* RespawnTarget;
+	//eatenGhostCounter is reset to 0 when exiting frightened state
+	UPROPERTY(VisibleAnywhere)
+		int8 EatenGhostCounter;
 
 
 private:

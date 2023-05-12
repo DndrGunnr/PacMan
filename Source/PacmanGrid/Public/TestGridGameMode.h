@@ -9,6 +9,7 @@
 #include "Inky.h"
 #include "Pinky.h"
 #include "Clyde.h"
+#include "PacmanPawn.h"
 #include "GameFramework/GameMode.h"
 #include "TestGridGameMode.generated.h"
 
@@ -49,6 +50,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<AClyde> ClydeClass;
+
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<APacmanPawn> PacmanClass;
 
 	//refererence to the ghosts
 	UPROPERTY(VisibleAnywhere)

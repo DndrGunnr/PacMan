@@ -27,6 +27,8 @@ public:
 
 	void SetEatenTarget() override;
 
+	void resetGhost() override;
+
 private:
 	UPROPERTY(VisibleAnywhere)
 		AGridBaseNode* ScatterTarget;

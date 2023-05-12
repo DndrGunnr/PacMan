@@ -49,9 +49,14 @@ void AGridPawn::BeginPlay()
 	CanMove = true;
 	Collider->OnComponentBeginOverlap.AddDynamic(this, &AGridPawn::OnOverlapBegin);
 
+	
 	//teleport setUp
 	leftTp= *(GridGenTMap.Find(FVector2D(18, 0)));
 	rightTp = *(GridGenTMap.Find(FVector2D(18, 27)));
+
+	//reference to game Instance
+	PointsGameInstance = Cast<UPMPointsGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
+	
 
 }
 
@@ -76,7 +81,7 @@ void AGridPawn::OnClick()
 
 void AGridPawn::ActivateCollision()
 {
-	//TODO: Collision handling
+	Collider->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 }
 
 void AGridPawn::HandleMovement()
@@ -215,6 +220,11 @@ FVector2D AGridPawn::GetTargetNodeCoords() const
 		return TargetNode->GetGridPosition();
 	}
 	return FVector2D::ZeroVector;
+}
+
+void AGridPawn::SetCurrentGridCoords(FVector2D newGridCoords)
+{
+	CurrentGridCoords = newGridCoords;
 }
 
 void AGridPawn::SetLastValidDirection(FVector Dir)

@@ -21,6 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	PACMANGRID_API UClass* Z_Construct_UClass_ATestGridGameMode_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_AGridGenerator_NoRegister();
+	PACMANGRID_API UClass* Z_Construct_UClass_UPMPointsGameInstance_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 // End Cross Module References
@@ -35,6 +36,14 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		P_FINISH;
 		P_NATIVE_BEGIN;
 		P_THIS->OnOverlapBegin(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AGridPawn::execSetCurrentGridCoords)
+	{
+		P_GET_STRUCT(FVector2D,Z_Param_newGridCoords);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->SetCurrentGridCoords(Z_Param_newGridCoords);
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(AGridPawn::execGetTargetNodeCoords)
@@ -83,6 +92,7 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 			{ "GetTargetNode", &AGridPawn::execGetTargetNode },
 			{ "GetTargetNodeCoords", &AGridPawn::execGetTargetNodeCoords },
 			{ "OnOverlapBegin", &AGridPawn::execOnOverlapBegin },
+			{ "SetCurrentGridCoords", &AGridPawn::execSetCurrentGridCoords },
 			{ "SetNextNodeByDir", &AGridPawn::execSetNextNodeByDir },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -296,6 +306,38 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics
+	{
+		struct GridPawn_eventSetCurrentGridCoords_Parms
+		{
+			FVector2D newGridCoords;
+		};
+		static const UECodeGen_Private::FStructPropertyParams NewProp_newGridCoords;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::NewProp_newGridCoords = { "newGridCoords", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(GridPawn_eventSetCurrentGridCoords_Parms, newGridCoords), Z_Construct_UScriptStruct_FVector2D, METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::NewProp_newGridCoords,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/GridPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AGridPawn, nullptr, "SetCurrentGridCoords", nullptr, nullptr, sizeof(Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::GridPawn_eventSetCurrentGridCoords_Parms), Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04820401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_AGridPawn_SetNextNodeByDir_Statics
 	{
 		struct GridPawn_eventSetNextNodeByDir_Parms
@@ -386,6 +428,10 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_TheGridGen_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_TheGridGen;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PointsGameInstance_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_PointsGameInstance;
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_GridGenTMap_ValueProp;
 		static const UECodeGen_Private::FStructPropertyParams NewProp_GridGenTMap_Key_KeyProp;
 #if WITH_METADATA
@@ -436,6 +482,7 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		{ &Z_Construct_UFunction_AGridPawn_GetTargetNode, "GetTargetNode" }, // 3065117669
 		{ &Z_Construct_UFunction_AGridPawn_GetTargetNodeCoords, "GetTargetNodeCoords" }, // 864479247
 		{ &Z_Construct_UFunction_AGridPawn_OnOverlapBegin, "OnOverlapBegin" }, // 3286657051
+		{ &Z_Construct_UFunction_AGridPawn_SetCurrentGridCoords, "SetCurrentGridCoords" }, // 3080056271
 		{ &Z_Construct_UFunction_AGridPawn_SetNextNodeByDir, "SetNextNodeByDir" }, // 2915750296
 	};
 #if WITH_METADATA
@@ -508,6 +555,13 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_TheGridGen = { "TheGridGen", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGridPawn, TheGridGen), Z_Construct_UClass_AGridGenerator_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_TheGridGen_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_TheGridGen_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_PointsGameInstance_MetaData[] = {
+		{ "Category", "GridPawn" },
+		{ "ModuleRelativePath", "Public/GridPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_PointsGameInstance = { "PointsGameInstance", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGridPawn, PointsGameInstance), Z_Construct_UClass_UPMPointsGameInstance_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_PointsGameInstance_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_PointsGameInstance_MetaData)) };
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_GridGenTMap_ValueProp = { "GridGenTMap", nullptr, (EPropertyFlags)0x0000000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 1, Z_Construct_UClass_AGridBaseNode_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_GridGenTMap_Key_KeyProp = { "GridGenTMap_Key", nullptr, (EPropertyFlags)0x0000000000020001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UScriptStruct_FVector2D, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
@@ -586,6 +640,7 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_CurrentGridCoords,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_GameMode,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_TheGridGen,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_PointsGameInstance,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_GridGenTMap_ValueProp,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_GridGenTMap_Key_KeyProp,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_GridGenTMap,
@@ -633,9 +688,9 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AGridPawn, AGridPawn::StaticClass, TEXT("AGridPawn"), &Z_Registration_Info_UClass_AGridPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGridPawn), 2374220199U) },
+		{ Z_Construct_UClass_AGridPawn, AGridPawn::StaticClass, TEXT("AGridPawn"), &Z_Registration_Info_UClass_AGridPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGridPawn), 2733773780U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_2995005008(TEXT("/Script/PacmanGrid"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_3156255037(TEXT("/Script/PacmanGrid"),
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

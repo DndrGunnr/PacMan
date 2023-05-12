@@ -55,3 +55,8 @@ void UPMPointsGameInstance::reset_lives()
 {
 	lives = 3;
 }
+
+int32 UPMPointsGameInstance::get_lives()
+{
+	return lives;
+}

@@ -45,6 +45,7 @@ void ATestGridGameMode::BeginPlay()
 	InkyPtr = GetWorld()->SpawnActor<AInky>(InkyClass, FVector((100 * 18) + 50, (100 * 11) + 50, 5.0f), FRotator(0, 0, 0));
 	PinkyPtr = GetWorld()->SpawnActor<APinky>(PinkyClass, FVector((100 * 18) + 50, (100 * 13) + 50, 5.0f), FRotator(0, 0, 0));
 	ClydePtr = GetWorld()->SpawnActor<AClyde>(ClydeClass, FVector((100 * 18) + 50, (100 * 15) + 50, 5.0f), FRotator(0, 0, 0));
+	PacmanPtr = Cast<APacmanPawn>(UGameplayStatics::GetActorOfClass(GetWorld(), PacmanClass));
 	CurrentState=EState::Scatter;
 	GetWorld()->GetTimerManager().SetTimer(ScatterModeTimer, this, &ATestGridGameMode::ScatterMode, 3.0f , false);
 }

@@ -105,3 +105,13 @@ void APinky::SetEatenTarget() {
 	}
 
 }
+
+void APinky::resetGhost()
+{
+	const FVector2D PinkySpawn = FVector2D(18, 13);
+	CurrentGridCoords = PinkySpawn;
+	LastNode = *(GridGenTMap.Find(PinkySpawn));
+	NextNode = *(GridGenTMap.Find(PinkySpawn));
+	SetTargetNode(*GridGenTMap.Find(PinkySpawn));
+	SetActorLocation(FVector(1850.f, 1350.f, 5.f));
+}

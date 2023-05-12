@@ -30,12 +30,22 @@ public:
 	virtual	void OnClick() override;
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
+	//called when lives counter reaches zero
+	void resetLevel();
+
 
 protected:
+
+
+
+	FTimerHandle DeathTimerHandle;
+
+	float DeathTimer;
 	virtual void BeginPlay() override;
 	virtual void HandleMovement() override;
 	virtual void SetTargetNode(AGridBaseNode* Node) override;
 	virtual void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
+
+
 };

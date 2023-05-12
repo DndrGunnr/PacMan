@@ -17,7 +17,7 @@ void EmptyLinkFunctionForGeneratedCodePacmanGrid_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x8EEFF2A4,
+				0x67F76AD3,
 				0x1C86E720,
 				METADATA_PARAMS(nullptr, 0)
 			};
@@ -25,5 +25,5 @@ void EmptyLinkFunctionForGeneratedCodePacmanGrid_init() {}
 		}
 		return Z_Registration_Info_UPackage__Script_PacmanGrid.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_PacmanGrid(Z_Construct_UPackage__Script_PacmanGrid, TEXT("/Script/PacmanGrid"), Z_Registration_Info_UPackage__Script_PacmanGrid, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x8EEFF2A4, 0x1C86E720));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_PacmanGrid(Z_Construct_UPackage__Script_PacmanGrid, TEXT("/Script/PacmanGrid"), Z_Registration_Info_UPackage__Script_PacmanGrid, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x67F76AD3, 0x1C86E720));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

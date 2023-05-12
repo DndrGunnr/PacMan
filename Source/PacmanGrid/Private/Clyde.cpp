@@ -105,3 +105,13 @@ void AClyde::SetEatenTarget() {
 
 }
 
+void AClyde::resetGhost()
+{
+	const FVector2D ClydeSpawn = FVector2D(18, 15);
+	CurrentGridCoords = ClydeSpawn;
+	LastNode = *(GridGenTMap.Find(ClydeSpawn));
+	NextNode = *(GridGenTMap.Find(ClydeSpawn));
+	SetTargetNode(*GridGenTMap.Find(ClydeSpawn));
+	SetActorLocation(FVector(1850.f, 1550.f, 5.f));
+}
+

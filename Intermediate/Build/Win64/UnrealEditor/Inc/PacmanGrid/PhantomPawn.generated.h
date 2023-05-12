@@ -27,6 +27,9 @@ class APacmanPawn;
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
 	DECLARE_FUNCTION(execGetPlayer); \
+	DECLARE_FUNCTION(execresetGhost); \
+	DECLARE_FUNCTION(execgetEatenGhostCounter); \
+	DECLARE_FUNCTION(execresetEatenGhostCounter); \
 	DECLARE_FUNCTION(execEatenMode);
 
 
@@ -41,6 +44,9 @@ class APacmanPawn;
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
 	DECLARE_FUNCTION(execGetPlayer); \
+	DECLARE_FUNCTION(execresetGhost); \
+	DECLARE_FUNCTION(execgetEatenGhostCounter); \
+	DECLARE_FUNCTION(execresetEatenGhostCounter); \
 	DECLARE_FUNCTION(execEatenMode);
 
 

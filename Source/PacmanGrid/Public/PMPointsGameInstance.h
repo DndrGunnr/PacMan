@@ -16,6 +16,8 @@ class PACMANGRID_API UPMPointsGameInstance : public UGameInstance
 
 protected:
 	UPROPERTY(VisibleAnywhere)
+		int32 level;
+	UPROPERTY(VisibleAnywhere)
 		int32 base_points;
 	UPROPERTY(VisibleAnywhere)
 		int32 ghost_points;
@@ -23,15 +25,15 @@ protected:
 		int32 fruit_points;
 	UPROPERTY(VisibleAnywhere)
 		int32 power_points;
-	UPROPERTY(VisibleAnywhere)
-		int32 score;
-	UPROPERTY(VisibleAnywhere)
-		int32 lives;
+
 
 	virtual void Init() override;
 
 public:
-	
+	UPROPERTY(VisibleAnywhere)
+		int32 score;
+	UPROPERTY(VisibleAnywhere)
+		int32 lives;
 	//functions to add points to score
 	void add_powerPoints();
 
@@ -50,6 +52,8 @@ public:
 	void remove_life();
 
 	void reset_lives();
+
+	int32 get_lives();
 
 	
 };

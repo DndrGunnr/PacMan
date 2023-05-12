@@ -111,3 +111,13 @@ void AInky::SetEatenTarget() {
 	}
 
 }
+
+void AInky::resetGhost()
+{
+	const FVector2D InkySpawn = FVector2D(19, 11);
+	CurrentGridCoords = InkySpawn;
+	LastNode = *(GridGenTMap.Find(InkySpawn));
+	NextNode = *(GridGenTMap.Find(InkySpawn));
+	SetTargetNode(*GridGenTMap.Find(InkySpawn));
+	SetActorLocation(FVector(1850.f, 1150.f, 5.f));
+}

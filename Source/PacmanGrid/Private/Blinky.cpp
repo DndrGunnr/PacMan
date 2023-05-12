@@ -91,6 +91,16 @@ void ABlinky::SetEatenTarget() {
 
 }
 
+void ABlinky::resetGhost()
+{
+	const FVector2D BlinkySpawn = FVector2D(21, 13);
+	CurrentGridCoords = BlinkySpawn;
+	LastNode = *(GridGenTMap.Find(BlinkySpawn));
+	NextNode = *(GridGenTMap.Find(BlinkySpawn));
+	SetTargetNode(*(GridGenTMap.Find(BlinkySpawn)));
+	SetActorLocation(FVector(2150.f,1350.f,5.f));
+}
+
 
 
 

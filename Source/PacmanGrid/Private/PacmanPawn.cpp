@@ -3,6 +3,7 @@
 
 #include "PacmanPawn.h"
 #include "TestGridGameMode.h"	
+#include "Kismet/GameplayStatics.h"
 
 
 APacmanPawn::APacmanPawn()
@@ -17,7 +18,11 @@ APacmanPawn::APacmanPawn()
 	LastValidInputDirection = FVector(0, 0, 0);
 	////posizione iniziale  del pawn nelle coordinate di griglia (9,13)
 	CurrentGridCoords = FVector2D(9, 13);
+
+	
+	DeathTimer = 5.0f;
 }
+
 
 void APacmanPawn::Tick(float DeltaTime)
 {
@@ -30,6 +35,8 @@ void APacmanPawn::BeginPlay()
 	//// posizione iniziale del pawn
 	FVector2D StartNode = TheGridGen->GetXYPositionByRelativeLocation(GetActorLocation());
 	LastNode = TheGridGen->TileMap[StartNode];
+
+	
 }
 
 void APacmanPawn::SetVerticalInput(float AxisValue)
@@ -69,6 +76,12 @@ void APacmanPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	InputComponent->BindAction("Click", IE_Pressed, this, &APacmanPawn::OnClick);
 }
 
+void APacmanPawn::resetLevel()
+{
+	//reset the level
+	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+}
+
 
 
 void APacmanPawn::HandleMovement()
@@ -99,6 +112,9 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 		PointNode->Collider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 			PointNode->Point_Mesh->SetVisibility(false);
 			PointNode->set_isEaten();
+
+			PointsGameInstance->add_basePoints();
+			
 	}
 
 	const auto PowerNode = Cast<APowerNode>(OtherActor);
@@ -108,16 +124,46 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 		PowerNode->Point_Mesh->SetVisibility(false);
 		PowerNode->set_isEaten();
 
+		PointsGameInstance->add_powerPoints();
+
 
 		//asyncronous state change ,TODO: implement succesful wasChase condition
 		GameMode->FrightenedMode();
 	}
 	//overlapping of ghost node
 	const auto PhantomPawn = Cast<APhantomPawn>(OtherActor);
+	const FVector PacmanSpawn(950.f, 1350.f, GetActorLocation().Z);
+
 	if (PhantomPawn && (GameMode->CurrentState == Chase || GameMode->CurrentState == Scatter) && !(PhantomPawn->GetIsEaten())) {
 		Collider->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 		GetWorld()->GetTimerManager().SetTimer(CollisionTimerHandle, this, &APacmanPawn::ActivateCollision, CollisionTimer, false);
-		//TODO: implement pacman death logic
+		
+		PointsGameInstance->remove_life();
+		if ((PointsGameInstance->get_lives())==0)
+		{
+			GetWorld()->GetTimerManager().SetTimer(DeathTimerHandle, this, &APacmanPawn::resetLevel, DeathTimer, false);
+
+		}
+		SetLastValidDirection(FVector(0, 0, 0));
+		SetLastValidDirection(FVector(0, 0, 0));
+		CurrentGridCoords=FVector2D(9,13);
+
+		//PACMAN RESET
+		// set lastnode
+		LastNode=(*(GridGenTMap.Find(FVector2D(9, 13))));
+		// set nextnode to the same as last node as pacman starts still
+		SetNextNode(*(GridGenTMap.Find(FVector2D(9, 13))));
+		// set targetnode to the same as prevoius nodes as pacman starts still
+		SetTargetNode(*(GridGenTMap.Find(FVector2D(9, 13))));
+		// teleport pacman to (9,13)
+		SetActorLocation(PacmanSpawn);
+		//GHOST RESET
+		GameMode->BlinkyPtr->resetGhost();
+		GameMode->PinkyPtr->resetGhost();
+		GameMode->InkyPtr->resetGhost();
+		GameMode->ClydePtr->resetGhost();
+		
+
 	}
 	else if (PhantomPawn && (GameMode->CurrentState == Frightened) && !(PhantomPawn->GetIsEaten())) {
 		PhantomPawn->SetIsEaten(true);

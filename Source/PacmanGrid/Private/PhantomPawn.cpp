@@ -62,6 +62,21 @@ void APhantomPawn::EatenMode()
 	StaticMeshRightEye->SetVisibility(true);
 }
 
+void APhantomPawn::resetEatenGhostCounter()
+{
+	EatenGhostCounter = 0;
+}
+
+int8 APhantomPawn::getEatenGhostCounter()
+{
+	return EatenGhostCounter;
+}
+//method to reset position and behaviour of ghosts once pacman gets eaten or game is finished
+void APhantomPawn::resetGhost()
+{
+	//overridden in child
+}
+
 void APhantomPawn::BeginPlay()
 {
 	Super::BeginPlay();
