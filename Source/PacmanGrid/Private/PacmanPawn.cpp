@@ -3,6 +3,7 @@
 
 #include "PacmanPawn.h"
 #include "TestGridGameMode.h"	
+#include "PacmanWidget.h"
 #include "Kismet/GameplayStatics.h"
 
 
@@ -18,6 +19,11 @@ APacmanPawn::APacmanPawn()
 	LastValidInputDirection = FVector(0, 0, 0);
 	////posizione iniziale  del pawn nelle coordinate di griglia (9,13)
 	CurrentGridCoords = FVector2D(9, 13);
+	PacmanNormalSpeed = 800.f;
+	PacmanPowerSpeed = 900.f;
+
+	UIClass = nullptr;
+	UIWidget = nullptr;
 
 	
 	DeathTimer = 5.0f;
@@ -27,6 +33,10 @@ APacmanPawn::APacmanPawn()
 void APacmanPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (GameMode->CurrentState == EState::Scatter)
+		CurrentMovementSpeed = PacmanNormalSpeed;
+	else if (GameMode->CurrentState == EState::Chase)
+		CurrentMovementSpeed = PacmanNormalSpeed;
 }
 
 void APacmanPawn::BeginPlay()
@@ -36,6 +46,17 @@ void APacmanPawn::BeginPlay()
 	FVector2D StartNode = TheGridGen->GetXYPositionByRelativeLocation(GetActorLocation());
 	LastNode = TheGridGen->TileMap[StartNode];
 
+	CurrentMovementSpeed = PacmanNormalSpeed;
+
+	if (IsValid(UIClass))
+	{
+		UIWidget = Cast<UPacmanWidget>(CreateWidget(GetWorld(), UIClass));
+		if (UIWidget != nullptr)
+			UIWidget->AddToViewport();
+	}
+
+	UIWidget->DisplayLives(PointsGameInstance->lives);
+	UIWidget->DisplayScore(PointsGameInstance->score);
 	
 }
 
@@ -114,6 +135,8 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 			PointNode->set_isEaten();
 
 			PointsGameInstance->add_basePoints();
+			UIWidget->DisplayScore(PointsGameInstance->score);
+		
 			
 	}
 
@@ -125,9 +148,11 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 		PowerNode->set_isEaten();
 
 		PointsGameInstance->add_powerPoints();
+		UIWidget->DisplayScore(PointsGameInstance->score);
+		SetCurrentSpeed(PacmanPowerSpeed);
 
 
-		//asyncronous state change ,TODO: implement succesful wasChase condition
+		//asyncronous state change 
 		GameMode->FrightenedMode();
 	}
 	//overlapping of ghost node
@@ -139,10 +164,25 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 		GetWorld()->GetTimerManager().SetTimer(CollisionTimerHandle, this, &APacmanPawn::ActivateCollision, CollisionTimer, false);
 		
 		PointsGameInstance->remove_life();
+		UIWidget->DisplayLives(PointsGameInstance->lives);
 		if ((PointsGameInstance->get_lives())==0)
 		{
+			//GAME OVER
+			GameOverText = "GAME OVER";
+			UIWidget->DisplayGameOver("GAME OVER");
+			PointsGameInstance->reset_lives();	
+			PointsGameInstance->reset_score();
 			GetWorld()->GetTimerManager().SetTimer(DeathTimerHandle, this, &APacmanPawn::resetLevel, DeathTimer, false);
 
+			//pacman stops moving
+			CanMove = false;
+			//ghosts stop moving
+			GameMode->BlinkyPtr->CanMove = false;
+			GameMode->PinkyPtr->CanMove = false;
+			GameMode->InkyPtr->CanMove = false;
+			GameMode->ClydePtr->CanMove = false;
+
+			
 		}
 		SetLastValidDirection(FVector(0, 0, 0));
 		SetLastValidDirection(FVector(0, 0, 0));
@@ -162,13 +202,19 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 		GameMode->PinkyPtr->resetGhost();
 		GameMode->InkyPtr->resetGhost();
 		GameMode->ClydePtr->resetGhost();
+		PointsGameInstance->reset_partialScore();
+		GetWorld()->GetTimerManager().SetTimer(GameMode->HouseTimer, GameMode->PinkyPtr, &APinky::ghostWait, 4.f, false);
 		
 
 	}
 	else if (PhantomPawn && (GameMode->CurrentState == Frightened) && !(PhantomPawn->GetIsEaten())) {
 		PhantomPawn->SetIsEaten(true);
 		PhantomPawn->EatenMode();
-		//TODO: implement score logic
+		//the score obtained by eating a ghost is 200,400,800,1600. This is
+		GameMode->EatenGhostCounter++;
+		PointsGameInstance->add_ghostPoints(GameMode->EatenGhostCounter);
+		UIWidget->DisplayScore(PointsGameInstance->score);
+		
 	}
 	
 }

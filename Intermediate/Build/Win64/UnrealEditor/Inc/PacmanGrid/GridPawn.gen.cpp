@@ -393,6 +393,11 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CanMove_MetaData[];
+#endif
+		static void NewProp_CanMove_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_CanMove;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_LastInputDirection_MetaData[];
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_LastInputDirection;
@@ -404,14 +409,6 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_CurrentMovementSpeed_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_CurrentMovementSpeed;
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_NormalMovementSpeed_MetaData[];
-#endif
-		static const UECodeGen_Private::FFloatPropertyParams NewProp_NormalMovementSpeed;
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_PowerMovementSpeed_MetaData[];
-#endif
-		static const UECodeGen_Private::FFloatPropertyParams NewProp_PowerMovementSpeed;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_AcceptedDistance_MetaData[];
 #endif
@@ -459,11 +456,6 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Collider;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_CanMove_MetaData[];
-#endif
-		static void NewProp_CanMove_SetBit(void* Obj);
-		static const UECodeGen_Private::FBoolPropertyParams NewProp_CanMove;
-#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsEaten_MetaData[];
 #endif
 		static void NewProp_bIsEaten_SetBit(void* Obj);
@@ -493,6 +485,17 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 	};
 #endif
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_MetaData[] = {
+		{ "Category", "GridPawn" },
+		{ "ModuleRelativePath", "Public/GridPawn.h" },
+	};
+#endif
+	void Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_SetBit(void* Obj)
+	{
+		((AGridPawn*)Obj)->CanMove = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove = { "CanMove", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AGridPawn), &Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_SetBit, METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_LastInputDirection_MetaData[] = {
 		{ "Category", "Movement" },
 		{ "ModuleRelativePath", "Public/GridPawn.h" },
@@ -513,20 +516,6 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_CurrentMovementSpeed = { "CurrentMovementSpeed", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGridPawn, CurrentMovementSpeed), METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_CurrentMovementSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_CurrentMovementSpeed_MetaData)) };
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_NormalMovementSpeed_MetaData[] = {
-		{ "Category", "Movement" },
-		{ "ModuleRelativePath", "Public/GridPawn.h" },
-	};
-#endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_NormalMovementSpeed = { "NormalMovementSpeed", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGridPawn, NormalMovementSpeed), METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_NormalMovementSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_NormalMovementSpeed_MetaData)) };
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_PowerMovementSpeed_MetaData[] = {
-		{ "Category", "Movement" },
-		{ "ModuleRelativePath", "Public/GridPawn.h" },
-	};
-#endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_PowerMovementSpeed = { "PowerMovementSpeed", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGridPawn, PowerMovementSpeed), METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_PowerMovementSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_PowerMovementSpeed_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_AcceptedDistance_MetaData[] = {
 		{ "Category", "GridPawn" },
@@ -609,17 +598,6 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_Collider = { "Collider", nullptr, (EPropertyFlags)0x0020080000080009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AGridPawn, Collider), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_Collider_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_Collider_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_MetaData[] = {
-		{ "Category", "GridPawn" },
-		{ "ModuleRelativePath", "Public/GridPawn.h" },
-	};
-#endif
-	void Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_SetBit(void* Obj)
-	{
-		((AGridPawn*)Obj)->CanMove = 1;
-	}
-	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove = { "CanMove", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AGridPawn), &Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_SetBit, METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove_MetaData)) };
-#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_MetaData[] = {
 		{ "Category", "GridPawn" },
 		{ "ModuleRelativePath", "Public/GridPawn.h" },
@@ -631,11 +609,10 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten = { "bIsEaten", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AGridPawn), &Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_SetBit, METADATA_PARAMS(Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGridPawn_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_LastInputDirection,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_LastValidInputDirection,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_CurrentMovementSpeed,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_NormalMovementSpeed,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_PowerMovementSpeed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_AcceptedDistance,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_CurrentGridCoords,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_GameMode,
@@ -649,7 +626,6 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_LastNode,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_StaticMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_Collider,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_CanMove,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGridPawn_Statics::NewProp_bIsEaten,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AGridPawn_Statics::StaticCppClassTypeInfo = {
@@ -688,9 +664,9 @@ void EmptyLinkFunctionForGeneratedCodeGridPawn() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AGridPawn, AGridPawn::StaticClass, TEXT("AGridPawn"), &Z_Registration_Info_UClass_AGridPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGridPawn), 2733773780U) },
+		{ Z_Construct_UClass_AGridPawn, AGridPawn::StaticClass, TEXT("AGridPawn"), &Z_Registration_Info_UClass_AGridPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGridPawn), 1253675664U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_3156255037(TEXT("/Script/PacmanGrid"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_4060553903(TEXT("/Script/PacmanGrid"),
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_GridPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

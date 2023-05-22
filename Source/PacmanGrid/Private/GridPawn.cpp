@@ -45,7 +45,6 @@ void AGridPawn::BeginPlay()
 	GameMode = (ATestGridGameMode*)(GetWorld()->GetAuthGameMode());
 	TheGridGen = GameMode->GField;
 	GridGenTMap = TheGridGen->GetTileMAp();
-	CurrentMovementSpeed = NormalMovementSpeed;
 	CanMove = true;
 	Collider->OnComponentBeginOverlap.AddDynamic(this, &AGridPawn::OnOverlapBegin);
 
@@ -111,6 +110,11 @@ bool AGridPawn::GetIsEaten() const
 void AGridPawn::SetIsEaten(bool bNewIsEaten)
 {
 	bIsEaten = bNewIsEaten;
+}
+
+void AGridPawn::SetCurrentSpeed(float speed)
+{
+	CurrentMovementSpeed = speed;
 }
 
 FVector2D AGridPawn::GetCurrentGridCoords() const

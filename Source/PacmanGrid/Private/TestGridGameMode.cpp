@@ -2,6 +2,8 @@
 
 
 #include "TestGridGameMode.h"
+#include "PacmanWidget.h"
+
 
 ATestGridGameMode::ATestGridGameMode()
 {
@@ -48,6 +50,7 @@ void ATestGridGameMode::BeginPlay()
 	PacmanPtr = Cast<APacmanPawn>(UGameplayStatics::GetActorOfClass(GetWorld(), PacmanClass));
 	CurrentState=EState::Scatter;
 	GetWorld()->GetTimerManager().SetTimer(ScatterModeTimer, this, &ATestGridGameMode::ScatterMode, 3.0f , false);
+	PinkyPtr->ghostWait();
 }
 
 void ATestGridGameMode::FrightenedMode()
@@ -67,6 +70,7 @@ void ATestGridGameMode::FrightenedMode()
 	CurrentState=EState::Frightened;
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Frightened Mode"));
 	bIsFlashing = false;
+	EatenGhostCounter = 0;
 
 	BlinkyPtr->VisibleBlue();
 	InkyPtr->VisibleBlue();
@@ -126,6 +130,7 @@ void ATestGridGameMode::ScatterMode()
 //to be implemented
 void ATestGridGameMode::ChaseMode()
 {//Debug message
+
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Chase Mode"));
 	CurrentState = EState::Chase;
 	wasChaseMode = true;

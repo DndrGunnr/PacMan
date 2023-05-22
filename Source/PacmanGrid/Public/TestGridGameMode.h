@@ -71,11 +71,13 @@ public:
 	AGridPawn* PacmanPtr;
 
 	UPROPERTY(VisibleAnywhere)
-		TEnumAsByte<EState> CurrentState;
+	TEnumAsByte<EState> CurrentState;
 
 	int8 flash_count;
 
 	bool bIsFlashing;
+
+	FTimerHandle HouseTimer;
 
 
 	ATestGridGameMode();
@@ -101,7 +103,8 @@ public:
 	//counting variables
 	//the scatter mode is repeated only 4 times
 	int16 Scatter_count;
-	//TODO
+	
+	int8 EatenGhostCounter;
 
 	//used to keep track of the state before frightened mode
 	bool wasChaseMode;

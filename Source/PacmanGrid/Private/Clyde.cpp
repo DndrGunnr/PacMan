@@ -13,8 +13,8 @@ AClyde::AClyde()
 {
 	CurrentGridCoords = FVector2D(18, 15);
 	ScatterTarget = nullptr;
-	bIsInHouse = true;
-	bIsLeavingHouse = false;
+	bIsWaiting = true;
+	ghostExitPoints = 90; // 60 + 30 from inky's
 }
 
 void AClyde::BeginPlay()
@@ -113,5 +113,21 @@ void AClyde::resetGhost()
 	NextNode = *(GridGenTMap.Find(ClydeSpawn));
 	SetTargetNode(*GridGenTMap.Find(ClydeSpawn));
 	SetActorLocation(FVector(1850.f, 1550.f, 5.f));
+	bIsWaiting = true;
+	bIsTimerStarted = false;
+}
+
+void AClyde::ghostWait()
+{
+	if (!GameMode->InkyPtr->getIsWaiting())
+		//once Inky has left, Clyde starts checking for the score 60+30(Inky's points)
+		//using this if to fire the timer only once, knowing that ghostWait is called every tick
+		if (!bIsTimerStarted) {
+			bIsTimerStarted = true;
+			GetWorld()->GetTimerManager().SetTimer(GameMode->HouseTimer, this, &AClyde::leaveHouse, 4.f, false);
+		}
+		else if (PointsGameInstance->partialScore > 90) 
+			leaveHouse();
+		
 }
 

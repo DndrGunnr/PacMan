@@ -77,6 +77,23 @@ void APhantomPawn::resetGhost()
 	//overridden in child
 }
 
+void APhantomPawn::ghostWait()
+{
+	//overridden in children
+}
+
+void APhantomPawn::setGhostExitPoints(int8 points)
+{
+	ghostExitPoints = points;
+}
+
+
+void APhantomPawn::leaveHouse()
+{
+	SetTargetNode(*GridGenTMap.Find(FVector2D(21,13)));
+	bIsWaiting= false;
+}
+
 void APhantomPawn::BeginPlay()
 {
 	Super::BeginPlay();
@@ -106,7 +123,7 @@ void APhantomPawn::OnNodeReached()
 
 void APhantomPawn::flipDirection()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("direction flipped")));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("direction flipped")));
 	LastValidInputDirection = ( - 1)*LastValidInputDirection;
 }
 
@@ -149,24 +166,34 @@ void APhantomPawn::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	if (this->GetTargetNode() == nullptr)
 	{
-		if (!bIsEaten) {
-			
-			if (GameMode->CurrentState == EState::Chase){
-				ResetOriginalColor();
-				SetChaseTarget();
+		//if the ghost are in the waiting state, they will follow the ghostWait() behaviour
+		if (!bIsWaiting) {
+			if (!bIsEaten) {
+
+				if (GameMode->CurrentState == EState::Chase) {
+					ResetOriginalColor();
+					SetChaseTarget();
+					SetSpeed(ChaseGhostSpeed);
+				}
+				else if (GameMode->CurrentState == EState::Scatter) {
+					ResetOriginalColor();
+					SetScatterTarget();
+					SetSpeed(ChaseGhostSpeed);
+				}
+				else if (GameMode->CurrentState == EState::Frightened) {
+					SetFrightenedTarget();
+					SetSpeed(FrightenedGhostSpeed);
+				}
 			}
-			else if (GameMode->CurrentState == EState::Scatter){
-				ResetOriginalColor();
-				SetScatterTarget();
+			else
+			{
+				SetEatenTarget();
+				SetSpeed(EatenGhostSpeed);
 			}
-			else if (GameMode->CurrentState == EState::Frightened)
-				SetFrightenedTarget();
+
 		}
 		else
-		{
-			SetEatenTarget();
-		}
-		
+			ghostWait();
 		
 	}
 }
@@ -241,15 +268,13 @@ void APhantomPawn::SetEatenTarget()
 	//overridden in child class
 }
 
-void APhantomPawn::LeaveHouse()
-{
-	//GetWorld()->GetTimerManager().SetTimer(HouseTimer);
 
-}
 
-void APhantomPawn::SetIsLeavingHouse(bool newIsLeavingHouse)
+
+
+bool APhantomPawn::getIsWaiting()
 {
-	bIsLeavingHouse = newIsLeavingHouse;
+	return bIsWaiting;
 }
 
 void APhantomPawn::SetChaseTarget()

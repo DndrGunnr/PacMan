@@ -9,6 +9,7 @@
 #include "PointNode.h"
 #include "PowerNode.h"
 #include "GridBaseNode.h"
+#include "PacmanWidget.h"
 #include "PacmanPawn.generated.h"
 
 
@@ -33,8 +34,20 @@ public:
 	//called when lives counter reaches zero
 	void resetLevel();
 
+	//User Interface
+	UPROPERTY(EditAnywhere, Category = "User Interface")
+		TSubclassOf<class UUserWidget> UIClass;
+
+	UPROPERTY(EditAnywhere, Category = "User Interface")
+		UPacmanWidget* UIWidget;
+
 
 protected:
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+		float PacmanNormalSpeed;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+		float PacmanPowerSpeed;
 
 
 
@@ -47,5 +60,5 @@ protected:
 	virtual void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
 
-
+	FString GameOverText;
 };

@@ -18,19 +18,18 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_AGridPawn_NoRegister();
 // End Cross Module References
-	DEFINE_FUNCTION(APhantomPawn::execSetIsLeavingHouse)
+	DEFINE_FUNCTION(APhantomPawn::execgetIsWaiting)
 	{
-		P_GET_UBOOL(Z_Param_newIsLeavingHouse);
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->SetIsLeavingHouse(Z_Param_newIsLeavingHouse);
+		*(bool*)Z_Param__Result=P_THIS->getIsWaiting();
 		P_NATIVE_END;
 	}
-	DEFINE_FUNCTION(APhantomPawn::execLeaveHouse)
+	DEFINE_FUNCTION(APhantomPawn::execleaveHouse)
 	{
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->LeaveHouse();
+		P_THIS->leaveHouse();
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(APhantomPawn::execSetEatenTarget)
@@ -83,6 +82,21 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		*(APacmanPawn**)Z_Param__Result=P_THIS->GetPlayer();
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(APhantomPawn::execsetGhostExitPoints)
+	{
+		P_GET_PROPERTY(FInt8Property,Z_Param_points);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->setGhostExitPoints(Z_Param_points);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(APhantomPawn::execghostWait)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ghostWait();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(APhantomPawn::execresetGhost)
 	{
 		P_FINISH;
@@ -117,15 +131,17 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		static const FNameNativePtrPair Funcs[] = {
 			{ "EatenMode", &APhantomPawn::execEatenMode },
 			{ "getEatenGhostCounter", &APhantomPawn::execgetEatenGhostCounter },
+			{ "getIsWaiting", &APhantomPawn::execgetIsWaiting },
 			{ "GetPlayer", &APhantomPawn::execGetPlayer },
 			{ "GetPlayerRelativeTarget", &APhantomPawn::execGetPlayerRelativeTarget },
-			{ "LeaveHouse", &APhantomPawn::execLeaveHouse },
+			{ "ghostWait", &APhantomPawn::execghostWait },
+			{ "leaveHouse", &APhantomPawn::execleaveHouse },
 			{ "resetEatenGhostCounter", &APhantomPawn::execresetEatenGhostCounter },
 			{ "resetGhost", &APhantomPawn::execresetGhost },
 			{ "SetChaseTarget", &APhantomPawn::execSetChaseTarget },
 			{ "SetEatenTarget", &APhantomPawn::execSetEatenTarget },
 			{ "SetFrightenedTarget", &APhantomPawn::execSetFrightenedTarget },
-			{ "SetIsLeavingHouse", &APhantomPawn::execSetIsLeavingHouse },
+			{ "setGhostExitPoints", &APhantomPawn::execsetGhostExitPoints },
 			{ "SetScatterTarget", &APhantomPawn::execSetScatterTarget },
 			{ "SetSpeed", &APhantomPawn::execSetSpeed },
 		};
@@ -184,6 +200,43 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_getEatenGhostCounter_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics
+	{
+		struct PhantomPawn_eventgetIsWaiting_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((PhantomPawn_eventgetIsWaiting_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(PhantomPawn_eventgetIsWaiting_Parms), &Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "getIsWaiting", nullptr, nullptr, sizeof(Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::PhantomPawn_eventgetIsWaiting_Parms), Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APhantomPawn_getIsWaiting()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_getIsWaiting_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -251,7 +304,7 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics
+	struct Z_Construct_UFunction_APhantomPawn_ghostWait_Statics
 	{
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
@@ -259,17 +312,39 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::Function_MetaDataParams[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_ghostWait_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "LeaveHouse", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_APhantomPawn_LeaveHouse()
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_ghostWait_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "ghostWait", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_ghostWait_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_ghostWait_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APhantomPawn_ghostWait()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_LeaveHouse_Statics::FuncParams);
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_ghostWait_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_APhantomPawn_leaveHouse_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_leaveHouse_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_leaveHouse_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "leaveHouse", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_leaveHouse_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_leaveHouse_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APhantomPawn_leaveHouse()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_leaveHouse_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -304,7 +379,9 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_resetGhost_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//used to reset position and state of the ghost after pacman eats it looses a life\n" },
 		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+		{ "ToolTip", "used to reset position and state of the ghost after pacman eats it looses a life" },
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_resetGhost_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "resetGhost", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_resetGhost_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_resetGhost_Statics::Function_MetaDataParams)) };
@@ -385,40 +462,35 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics
+	struct Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics
 	{
-		struct PhantomPawn_eventSetIsLeavingHouse_Parms
+		struct PhantomPawn_eventsetGhostExitPoints_Parms
 		{
-			bool newIsLeavingHouse;
+			int8 points;
 		};
-		static void NewProp_newIsLeavingHouse_SetBit(void* Obj);
-		static const UECodeGen_Private::FBoolPropertyParams NewProp_newIsLeavingHouse;
+		static const UECodeGen_Private::FInt8PropertyParams NewProp_points;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
-	void Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::NewProp_newIsLeavingHouse_SetBit(void* Obj)
-	{
-		((PhantomPawn_eventSetIsLeavingHouse_Parms*)Obj)->newIsLeavingHouse = 1;
-	}
-	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::NewProp_newIsLeavingHouse = { "newIsLeavingHouse", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(PhantomPawn_eventSetIsLeavingHouse_Parms), &Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::NewProp_newIsLeavingHouse_SetBit, METADATA_PARAMS(nullptr, 0) };
-	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::PropPointers[] = {
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::NewProp_newIsLeavingHouse,
+	const UECodeGen_Private::FInt8PropertyParams Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::NewProp_points = { "points", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int8, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(PhantomPawn_eventsetGhostExitPoints_Parms, points), METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::NewProp_points,
 	};
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::Function_MetaDataParams[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "SetIsLeavingHouse", nullptr, nullptr, sizeof(Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::PhantomPawn_eventSetIsLeavingHouse_Parms), Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::Function_MetaDataParams)) };
-	UFunction* Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse()
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APhantomPawn, nullptr, "setGhostExitPoints", nullptr, nullptr, sizeof(Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::PhantomPawn_eventsetGhostExitPoints_Parms), Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APhantomPawn_setGhostExitPoints()
 	{
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse_Statics::FuncParams);
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APhantomPawn_setGhostExitPoints_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -529,6 +601,20 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 #endif
 		static const UECodeGen_Private::FInt8PropertyParams NewProp_EatenGhostCounter;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsWaiting_MetaData[];
+#endif
+		static void NewProp_bIsWaiting_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsWaiting;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bIsTimerStarted_MetaData[];
+#endif
+		static void NewProp_bIsTimerStarted_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsTimerStarted;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ghostExitPoints_MetaData[];
+#endif
+		static const UECodeGen_Private::FInt8PropertyParams NewProp_ghostExitPoints;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Player_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
@@ -557,15 +643,17 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_APhantomPawn_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_APhantomPawn_EatenMode, "EatenMode" }, // 1854551801
 		{ &Z_Construct_UFunction_APhantomPawn_getEatenGhostCounter, "getEatenGhostCounter" }, // 1212916801
+		{ &Z_Construct_UFunction_APhantomPawn_getIsWaiting, "getIsWaiting" }, // 512277764
 		{ &Z_Construct_UFunction_APhantomPawn_GetPlayer, "GetPlayer" }, // 448858372
 		{ &Z_Construct_UFunction_APhantomPawn_GetPlayerRelativeTarget, "GetPlayerRelativeTarget" }, // 1049353664
-		{ &Z_Construct_UFunction_APhantomPawn_LeaveHouse, "LeaveHouse" }, // 2223311519
+		{ &Z_Construct_UFunction_APhantomPawn_ghostWait, "ghostWait" }, // 4064337697
+		{ &Z_Construct_UFunction_APhantomPawn_leaveHouse, "leaveHouse" }, // 2180670326
 		{ &Z_Construct_UFunction_APhantomPawn_resetEatenGhostCounter, "resetEatenGhostCounter" }, // 1260605770
-		{ &Z_Construct_UFunction_APhantomPawn_resetGhost, "resetGhost" }, // 1149218638
+		{ &Z_Construct_UFunction_APhantomPawn_resetGhost, "resetGhost" }, // 474675908
 		{ &Z_Construct_UFunction_APhantomPawn_SetChaseTarget, "SetChaseTarget" }, // 844093314
 		{ &Z_Construct_UFunction_APhantomPawn_SetEatenTarget, "SetEatenTarget" }, // 351362860
 		{ &Z_Construct_UFunction_APhantomPawn_SetFrightenedTarget, "SetFrightenedTarget" }, // 1714007769
-		{ &Z_Construct_UFunction_APhantomPawn_SetIsLeavingHouse, "SetIsLeavingHouse" }, // 3469255804
+		{ &Z_Construct_UFunction_APhantomPawn_setGhostExitPoints, "setGhostExitPoints" }, // 2699830759
 		{ &Z_Construct_UFunction_APhantomPawn_SetScatterTarget, "SetScatterTarget" }, // 2369553349
 		{ &Z_Construct_UFunction_APhantomPawn_SetSpeed, "SetSpeed" }, // 1205749200
 	};
@@ -646,9 +734,9 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APhantomPawn_Statics::NewProp_RespawnTarget_MetaData[] = {
 		{ "Category", "PhantomPawn" },
-		{ "Comment", "//To Do: Add logic for elroy mode\n" },
+		{ "Comment", "//target followed by the ghosts in eaten mode in order to respawn\n" },
 		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
-		{ "ToolTip", "To Do: Add logic for elroy mode" },
+		{ "ToolTip", "target followed by the ghosts in eaten mode in order to respawn" },
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APhantomPawn_Statics::NewProp_RespawnTarget = { "RespawnTarget", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APhantomPawn, RespawnTarget), Z_Construct_UClass_AGridBaseNode_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APhantomPawn_Statics::NewProp_RespawnTarget_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APhantomPawn_Statics::NewProp_RespawnTarget_MetaData)) };
@@ -661,6 +749,37 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 	};
 #endif
 	const UECodeGen_Private::FInt8PropertyParams Z_Construct_UClass_APhantomPawn_Statics::NewProp_EatenGhostCounter = { "EatenGhostCounter", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Int8, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APhantomPawn, EatenGhostCounter), METADATA_PARAMS(Z_Construct_UClass_APhantomPawn_Statics::NewProp_EatenGhostCounter_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APhantomPawn_Statics::NewProp_EatenGhostCounter_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsWaiting_MetaData[] = {
+		{ "Category", "PhantomPawn" },
+		{ "Comment", "//used to differentiate between ghost waiting in house and ghosts outside\n" },
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+		{ "ToolTip", "used to differentiate between ghost waiting in house and ghosts outside" },
+	};
+#endif
+	void Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsWaiting_SetBit(void* Obj)
+	{
+		((APhantomPawn*)Obj)->bIsWaiting = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsWaiting = { "bIsWaiting", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(APhantomPawn), &Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsWaiting_SetBit, METADATA_PARAMS(Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsWaiting_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsWaiting_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsTimerStarted_MetaData[] = {
+		{ "Category", "PhantomPawn" },
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+	};
+#endif
+	void Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsTimerStarted_SetBit(void* Obj)
+	{
+		((APhantomPawn*)Obj)->bIsTimerStarted = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsTimerStarted = { "bIsTimerStarted", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(APhantomPawn), &Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsTimerStarted_SetBit, METADATA_PARAMS(Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsTimerStarted_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsTimerStarted_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APhantomPawn_Statics::NewProp_ghostExitPoints_MetaData[] = {
+		{ "Category", "PhantomPawn" },
+		{ "ModuleRelativePath", "Public/PhantomPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FInt8PropertyParams Z_Construct_UClass_APhantomPawn_Statics::NewProp_ghostExitPoints = { "ghostExitPoints", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Int8, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APhantomPawn, ghostExitPoints), METADATA_PARAMS(Z_Construct_UClass_APhantomPawn_Statics::NewProp_ghostExitPoints_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APhantomPawn_Statics::NewProp_ghostExitPoints_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APhantomPawn_Statics::NewProp_Player_MetaData[] = {
 		{ "Category", "PhantomPawn" },
@@ -708,6 +827,9 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_EatenGhostSpeed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_RespawnTarget,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_EatenGhostCounter,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsWaiting,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsTimerStarted,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_ghostExitPoints,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_Player,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_GridPawn,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APhantomPawn_Statics::NewProp_bIsInHouse,
@@ -749,9 +871,9 @@ void EmptyLinkFunctionForGeneratedCodePhantomPawn() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APhantomPawn, APhantomPawn::StaticClass, TEXT("APhantomPawn"), &Z_Registration_Info_UClass_APhantomPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APhantomPawn), 2397501298U) },
+		{ Z_Construct_UClass_APhantomPawn, APhantomPawn::StaticClass, TEXT("APhantomPawn"), &Z_Registration_Info_UClass_APhantomPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APhantomPawn), 2975680135U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_2356466934(TEXT("/Script/PacmanGrid"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_2319414185(TEXT("/Script/PacmanGrid"),
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

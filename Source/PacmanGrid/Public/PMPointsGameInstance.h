@@ -32,6 +32,9 @@ protected:
 public:
 	UPROPERTY(VisibleAnywhere)
 		int32 score;
+	//used by ghosts to check house exit condition
+	UPROPERTY(VisibleAnywhere)
+		int32 partialScore;
 	UPROPERTY(VisibleAnywhere)
 		int32 lives;
 	//functions to add points to score
@@ -39,11 +42,13 @@ public:
 
 	void add_basePoints();
 
-	void add_ghostPoints();
+	void add_ghostPoints(int8);
 
 	void add_fruitPoints();
 
 	void reset_score();
+
+	void reset_partialScore();
 
 	//functions to add up lives
 

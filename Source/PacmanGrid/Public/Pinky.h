@@ -29,6 +29,8 @@ public:
 
 	void resetGhost() override;
 
+	void ghostWait() override;
+
 private:
 	UPROPERTY(VisibleAnywhere)
 		AGridBaseNode* ScatterTarget;

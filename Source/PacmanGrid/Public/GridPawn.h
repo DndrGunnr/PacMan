@@ -40,6 +40,8 @@ public:
 	FVector2D GetTargetNodeCoords() const;
 	UFUNCTION(BlueprintCallable)
 	void SetCurrentGridCoords(FVector2D newGridCoords);
+	UPROPERTY(VisibleAnywhere)
+		bool CanMove;
 	//posizione dei due teleport
 	AGridBaseNode* leftTp;
 	AGridBaseNode* rightTp;
@@ -60,11 +62,8 @@ protected:
 	void SetLastValidDirection(FVector Dir);
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
-	float CurrentMovementSpeed = 100.0f;
-	UPROPERTY(EditAnywhere, Category = "Movement")
-	float NormalMovementSpeed = 100.0f;
-	UPROPERTY(EditAnywhere, Category="Movement")
-	float PowerMovementSpeed = 200.0f;
+	float CurrentMovementSpeed = 100.f;
+
 	UPROPERTY(EditAnywhere)
 	float AcceptedDistance = 4.f;
 
@@ -102,8 +101,7 @@ protected:
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* Collider;
 
-	UPROPERTY(VisibleAnywhere)
-	bool CanMove;
+
 
 	UPROPERTY(VisibleAnywhere)
 	bool bIsEaten;
@@ -115,6 +113,8 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	bool GetIsEaten() const;
 	void SetIsEaten(bool bNewIsEaten);
+
+	void SetCurrentSpeed(float speed);
 
 	//to obtain current coords 
 	FVector2D GetCurrentGridCoords() const;

@@ -13,6 +13,9 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 	PACMANGRID_API UClass* Z_Construct_UClass_APacmanPawn();
 	PACMANGRID_API UClass* Z_Construct_UClass_AGridPawn();
 	UPackage* Z_Construct_UPackage__Script_PacmanGrid();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
+	PACMANGRID_API UClass* Z_Construct_UClass_UPacmanWidget_NoRegister();
 // End Cross Module References
 	void APacmanPawn::StaticRegisterNativesAPacmanPawn()
 	{
@@ -28,6 +31,23 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_UIClass_MetaData[];
+#endif
+		static const UECodeGen_Private::FClassPropertyParams NewProp_UIClass;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_UIWidget_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_UIWidget;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PacmanNormalSpeed_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_PacmanNormalSpeed;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PacmanPowerSpeed_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_PacmanPowerSpeed;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
 	};
@@ -43,6 +63,43 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		{ "ModuleRelativePath", "Public/PacmanPawn.h" },
 	};
 #endif
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIClass_MetaData[] = {
+		{ "Category", "User Interface" },
+		{ "Comment", "//User Interface\n" },
+		{ "ModuleRelativePath", "Public/PacmanPawn.h" },
+		{ "ToolTip", "User Interface" },
+	};
+#endif
+	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIClass = { "UIClass", nullptr, (EPropertyFlags)0x0014000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APacmanPawn, UIClass), Z_Construct_UClass_UUserWidget_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIClass_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIWidget_MetaData[] = {
+		{ "Category", "User Interface" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/PacmanPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIWidget = { "UIWidget", nullptr, (EPropertyFlags)0x0010000000080009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APacmanPawn, UIWidget), Z_Construct_UClass_UPacmanWidget_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIWidget_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIWidget_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanNormalSpeed_MetaData[] = {
+		{ "Category", "Movement" },
+		{ "ModuleRelativePath", "Public/PacmanPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanNormalSpeed = { "PacmanNormalSpeed", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APacmanPawn, PacmanNormalSpeed), METADATA_PARAMS(Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanNormalSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanNormalSpeed_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanPowerSpeed_MetaData[] = {
+		{ "Category", "Movement" },
+		{ "ModuleRelativePath", "Public/PacmanPawn.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanPowerSpeed = { "PacmanPowerSpeed", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APacmanPawn, PacmanPowerSpeed), METADATA_PARAMS(Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanPowerSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanPowerSpeed_MetaData)) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APacmanPawn_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIClass,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APacmanPawn_Statics::NewProp_UIWidget,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanNormalSpeed,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APacmanPawn_Statics::NewProp_PacmanPowerSpeed,
+	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APacmanPawn_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APacmanPawn>::IsAbstract,
 	};
@@ -52,11 +109,11 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
 		nullptr,
-		nullptr,
+		Z_Construct_UClass_APacmanPawn_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
-		0,
+		UE_ARRAY_COUNT(Z_Construct_UClass_APacmanPawn_Statics::PropPointers),
 		0,
 		0x009000A4u,
 		METADATA_PARAMS(Z_Construct_UClass_APacmanPawn_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_APacmanPawn_Statics::Class_MetaDataParams))
@@ -79,9 +136,9 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PacmanPawn_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APacmanPawn, APacmanPawn::StaticClass, TEXT("APacmanPawn"), &Z_Registration_Info_UClass_APacmanPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APacmanPawn), 3233829516U) },
+		{ Z_Construct_UClass_APacmanPawn, APacmanPawn::StaticClass, TEXT("APacmanPawn"), &Z_Registration_Info_UClass_APacmanPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APacmanPawn), 3449526203U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PacmanPawn_h_3825565003(TEXT("/Script/PacmanGrid"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PacmanPawn_h_801185767(TEXT("/Script/PacmanGrid"),
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PacmanPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PacmanPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

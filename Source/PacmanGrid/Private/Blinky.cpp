@@ -11,8 +11,9 @@ AGridBaseNode* ABlinky::GetPlayerRelativeTarget()
 
 ABlinky::ABlinky()
 {
-	CurrentGridCoords = FVector2D(27, 26);
+	CurrentGridCoords = FVector2D(21,13);
 	ScatterTarget = nullptr;
+	bIsWaiting = false;
 }
 
 void ABlinky::BeginPlay()
@@ -21,9 +22,6 @@ void ABlinky::BeginPlay()
 	FVector2D BlinkyScatter = FVector2D(34, 25);
 	ScatterTarget = *GridGenTMap.Find(BlinkyScatter);
 	//SetNextNodeByDir(FVector(0, 0, 0), true);
-	//TODO: Set RespawnTarget
-
-	
 }
 
 void ABlinky::SetScatterTarget()

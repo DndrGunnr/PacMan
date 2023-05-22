@@ -13,8 +13,8 @@ APinky::APinky()
 {
 	CurrentGridCoords = FVector2D(18, 13);
 	ScatterTarget = nullptr;
-	bIsInHouse = true;
-	bIsLeavingHouse = false;
+	bIsWaiting = true;
+	ghostExitPoints = 0;
 }
 
 void APinky::BeginPlay()
@@ -114,4 +114,17 @@ void APinky::resetGhost()
 	NextNode = *(GridGenTMap.Find(PinkySpawn));
 	SetTargetNode(*GridGenTMap.Find(PinkySpawn));
 	SetActorLocation(FVector(1850.f, 1350.f, 5.f));
+	bIsWaiting = true;
+	bIsTimerStarted = false;
+}
+
+void APinky::ghostWait()
+{
+	//Each ghost leaves house if one of two conditions is met:
+	if (!bIsTimerStarted) {
+		bIsTimerStarted = true;
+		GetWorld()->GetTimerManager().SetTimer(GameMode->HouseTimer, this, &APinky::leaveHouse, 4.f, false);
+	}
+	if (PointsGameInstance->partialScore >= ghostExitPoints) 
+		leaveHouse();
 }

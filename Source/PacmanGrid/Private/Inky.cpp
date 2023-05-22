@@ -13,7 +13,8 @@ AInky::AInky()
 {
 	CurrentGridCoords = FVector2D(5,26);
 	ScatterTarget = nullptr;
-	bIsInHouse= true;
+	bIsWaiting = true;
+	ghostExitPoints = 30;
 
 }
 
@@ -120,4 +121,19 @@ void AInky::resetGhost()
 	NextNode = *(GridGenTMap.Find(InkySpawn));
 	SetTargetNode(*GridGenTMap.Find(InkySpawn));
 	SetActorLocation(FVector(1850.f, 1150.f, 5.f));
+	bIsWaiting= true;
+	bIsTimerStarted = false;
+}
+
+void AInky::ghostWait()
+{
+	//each ghost waits till the one before has left the ghost house
+	if (!(GameMode->PinkyPtr->getIsWaiting()))
+		//once pinky has left, inky waits for the player to reach 30 points or until the time is up
+		if (!bIsTimerStarted) {
+			bIsTimerStarted = true;
+			GetWorld()->GetTimerManager().SetTimer(GameMode->HouseTimer, this, &APhantomPawn::leaveHouse, 4.f, false);
+		}
+		else if (PointsGameInstance->partialScore > 50) 
+			leaveHouse();
 }

@@ -13,7 +13,6 @@
     </None>
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
-    <None Include="..\..\README.md" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -89,6 +88,9 @@
     <ClCompile Include="..\..\Source\PacmanGrid\Private\PacmanPawn.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\PacmanWidget.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PacmanGrid\Private\PhantomPawn.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
@@ -147,6 +149,9 @@
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\PacmanPawn.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\PacmanWidget.h">
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\PhantomPawn.h">

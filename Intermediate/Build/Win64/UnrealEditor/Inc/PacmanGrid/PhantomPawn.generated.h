@@ -18,8 +18,8 @@ class APacmanPawn;
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_SPARSE_DATA
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS \
  \
-	DECLARE_FUNCTION(execSetIsLeavingHouse); \
-	DECLARE_FUNCTION(execLeaveHouse); \
+	DECLARE_FUNCTION(execgetIsWaiting); \
+	DECLARE_FUNCTION(execleaveHouse); \
 	DECLARE_FUNCTION(execSetEatenTarget); \
 	DECLARE_FUNCTION(execSetFrightenedTarget); \
 	DECLARE_FUNCTION(execSetScatterTarget); \
@@ -27,6 +27,8 @@ class APacmanPawn;
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
 	DECLARE_FUNCTION(execGetPlayer); \
+	DECLARE_FUNCTION(execsetGhostExitPoints); \
+	DECLARE_FUNCTION(execghostWait); \
 	DECLARE_FUNCTION(execresetGhost); \
 	DECLARE_FUNCTION(execgetEatenGhostCounter); \
 	DECLARE_FUNCTION(execresetEatenGhostCounter); \
@@ -35,8 +37,8 @@ class APacmanPawn;
 
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_PhantomPawn_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
  \
-	DECLARE_FUNCTION(execSetIsLeavingHouse); \
-	DECLARE_FUNCTION(execLeaveHouse); \
+	DECLARE_FUNCTION(execgetIsWaiting); \
+	DECLARE_FUNCTION(execleaveHouse); \
 	DECLARE_FUNCTION(execSetEatenTarget); \
 	DECLARE_FUNCTION(execSetFrightenedTarget); \
 	DECLARE_FUNCTION(execSetScatterTarget); \
@@ -44,6 +46,8 @@ class APacmanPawn;
 	DECLARE_FUNCTION(execGetPlayerRelativeTarget); \
 	DECLARE_FUNCTION(execSetSpeed); \
 	DECLARE_FUNCTION(execGetPlayer); \
+	DECLARE_FUNCTION(execsetGhostExitPoints); \
+	DECLARE_FUNCTION(execghostWait); \
 	DECLARE_FUNCTION(execresetGhost); \
 	DECLARE_FUNCTION(execgetEatenGhostCounter); \
 	DECLARE_FUNCTION(execresetEatenGhostCounter); \

@@ -50,7 +50,18 @@ public:
 		int8 getEatenGhostCounter();
 
 	UFUNCTION()
+		//used to reset position and state of the ghost after pacman eats it looses a life
 		virtual void resetGhost();
+
+	UFUNCTION()
+		virtual void ghostWait();
+
+	UFUNCTION()
+		void setGhostExitPoints(int8 points);
+
+
+
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -78,11 +89,29 @@ protected:
 		float EatenGhostSpeed;
 
 	//To Do: Add logic for elroy mode
+	
+	//target followed by the ghosts in eaten mode in order to respawn
 	UPROPERTY(VisibleAnywhere)
 		AGridBaseNode* RespawnTarget;
 	//eatenGhostCounter is reset to 0 when exiting frightened state
 	UPROPERTY(VisibleAnywhere)
 		int8 EatenGhostCounter;
+
+	//used to differentiate between ghost waiting in house and ghosts outside
+	UPROPERTY(VisibleAnywhere)
+		bool bIsWaiting;
+
+	UPROPERTY(VisibleAnywhere)
+		bool bIsTimerStarted;
+
+	FTimerHandle FlashTimer;
+
+	UPROPERTY(VisibleAnywhere)
+		int8 ghostExitPoints;
+
+
+
+
 
 
 private:
@@ -92,9 +121,8 @@ private:
 	UPROPERTY(VisibleAnywhere)
 		AGridPawn* GridPawn;
 
-	FTimerHandle FlashTimer;
-	FTimerHandle HouseTimer;
 
+	
 	float Flash_time;
 	
 
@@ -117,14 +145,17 @@ public:
 	UFUNCTION()
 	virtual void SetEatenTarget();
 	UFUNCTION()
-	virtual void LeaveHouse();
+	void leaveHouse();
+
 	UFUNCTION()
-	void SetIsLeavingHouse(bool newIsLeavingHouse); 
+	bool getIsWaiting();
 
 	UPROPERTY(VisibleAnywhere)
 	bool bIsInHouse;
 	UPROPERTY(VisibleAnywhere)
 	bool bIsLeavingHouse;
+
+	
 
 
 	//used to flip the direction of the ghost on state changes
