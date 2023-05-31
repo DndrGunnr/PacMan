@@ -7,6 +7,7 @@
 #include "GridGenerator.h"
 #include "GridPlayerController.h"
 #include "PointNode.h"
+#include "FruitNode.h"
 #include "PowerNode.h"
 #include "GridBaseNode.h"
 #include "PacmanWidget.h"
@@ -33,6 +34,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	//called when lives counter reaches zero
 	void resetLevel();
+	bool isGameOver;
 
 	//User Interface
 	UPROPERTY(EditAnywhere, Category = "User Interface")
@@ -48,6 +50,13 @@ protected:
 		float PacmanNormalSpeed;
 	UPROPERTY(EditAnywhere, Category = "Movement")
 		float PacmanPowerSpeed;
+	UPROPERTY(VisibleAnywhere)
+		int32 DotsCount;
+	UPROPERTY(VisibleAnywhere)
+		int32 PowerDotsCount;
+
+	UPROPERTY(VisibleAnywhere);
+		int32 FruitCount;
 
 
 

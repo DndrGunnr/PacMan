@@ -21,6 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 	PACMANGRID_API UClass* Z_Construct_UClass_APinky_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_AClyde_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_APacmanPawn_NoRegister();
+	PACMANGRID_API UClass* Z_Construct_UClass_AFruitNode_NoRegister();
 	PACMANGRID_API UClass* Z_Construct_UClass_AGridPawn_NoRegister();
 // End Cross Module References
 	static FEnumRegistrationInfo Z_Registration_Info_UEnum_EState;
@@ -77,8 +78,72 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 		}
 		return Z_Registration_Info_UEnum_EState.InnerSingleton;
 	}
+	DEFINE_FUNCTION(ATestGridGameMode::execFruitDestroy)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->FruitDestroy();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ATestGridGameMode::execFruitSpawn)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->FruitSpawn();
+		P_NATIVE_END;
+	}
 	void ATestGridGameMode::StaticRegisterNativesATestGridGameMode()
 	{
+		UClass* Class = ATestGridGameMode::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "FruitDestroy", &ATestGridGameMode::execFruitDestroy },
+			{ "FruitSpawn", &ATestGridGameMode::execFruitSpawn },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_ATestGridGameMode_FruitDestroy_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ATestGridGameMode_FruitDestroy_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/TestGridGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ATestGridGameMode_FruitDestroy_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ATestGridGameMode, nullptr, "FruitDestroy", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ATestGridGameMode_FruitDestroy_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ATestGridGameMode_FruitDestroy_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ATestGridGameMode_FruitDestroy()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ATestGridGameMode_FruitDestroy_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ATestGridGameMode_FruitSpawn_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ATestGridGameMode_FruitSpawn_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/TestGridGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ATestGridGameMode_FruitSpawn_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ATestGridGameMode, nullptr, "FruitSpawn", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ATestGridGameMode_FruitSpawn_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ATestGridGameMode_FruitSpawn_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ATestGridGameMode_FruitSpawn()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ATestGridGameMode_FruitSpawn_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(ATestGridGameMode);
 	UClass* Z_Construct_UClass_ATestGridGameMode_NoRegister()
@@ -88,6 +153,7 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 	struct Z_Construct_UClass_ATestGridGameMode_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -120,6 +186,10 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 #endif
 		static const UECodeGen_Private::FClassPropertyParams NewProp_PacmanClass;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FruitClass_MetaData[];
+#endif
+		static const UECodeGen_Private::FClassPropertyParams NewProp_FruitClass;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_BlinkyPtr_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_BlinkyPtr;
@@ -136,6 +206,10 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_ClydePtr;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FruitPtr_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_FruitPtr;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PacmanPtr_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_PacmanPtr;
@@ -150,6 +224,10 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 	UObject* (*const Z_Construct_UClass_ATestGridGameMode_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_AGameMode,
 		(UObject* (*)())Z_Construct_UPackage__Script_PacmanGrid,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_ATestGridGameMode_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_ATestGridGameMode_FruitDestroy, "FruitDestroy" }, // 2919387814
+		{ &Z_Construct_UFunction_ATestGridGameMode_FruitSpawn, "FruitSpawn" }, // 3956241498
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::Class_MetaDataParams[] = {
@@ -214,6 +292,13 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 #endif
 	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PacmanClass = { "PacmanClass", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, PacmanClass), Z_Construct_UClass_APacmanPawn_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PacmanClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PacmanClass_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitClass_MetaData[] = {
+		{ "Category", "TestGridGameMode" },
+		{ "ModuleRelativePath", "Public/TestGridGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitClass = { "FruitClass", nullptr, (EPropertyFlags)0x0014000000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, FruitClass), Z_Construct_UClass_AFruitNode_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitClass_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_BlinkyPtr_MetaData[] = {
 		{ "Category", "TestGridGameMode" },
 		{ "Comment", "//refererence to the ghosts\n" },
@@ -244,6 +329,13 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr = { "ClydePtr", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, ClydePtr), Z_Construct_UClass_AClyde_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitPtr_MetaData[] = {
+		{ "Category", "TestGridGameMode" },
+		{ "ModuleRelativePath", "Public/TestGridGameMode.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitPtr = { "FruitPtr", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATestGridGameMode, FruitPtr), Z_Construct_UClass_AFruitNode_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitPtr_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitPtr_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PacmanPtr_MetaData[] = {
 		{ "Category", "TestGridGameMode" },
 		{ "Comment", "//reference to the pacman\n" },
@@ -267,10 +359,12 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydeClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PacmanClass,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_BlinkyPtr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_InkyPtr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PinkyPtr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_ClydePtr,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_FruitPtr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_PacmanPtr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ATestGridGameMode_Statics::NewProp_CurrentState,
 	};
@@ -282,11 +376,11 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 		"Game",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_ATestGridGameMode_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_ATestGridGameMode_Statics::PropPointers),
 		0,
 		0x009002ACu,
@@ -314,9 +408,9 @@ void EmptyLinkFunctionForGeneratedCodeTestGridGameMode() {}
 		{ EState_StaticEnum, TEXT("EState"), &Z_Registration_Info_UEnum_EState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3665404223U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ATestGridGameMode, ATestGridGameMode::StaticClass, TEXT("ATestGridGameMode"), &Z_Registration_Info_UClass_ATestGridGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATestGridGameMode), 1138261287U) },
+		{ Z_Construct_UClass_ATestGridGameMode, ATestGridGameMode::StaticClass, TEXT("ATestGridGameMode"), &Z_Registration_Info_UClass_ATestGridGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATestGridGameMode), 1493478207U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_3299509003(TEXT("/Script/PacmanGrid"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_3490839483(TEXT("/Script/PacmanGrid"),
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_Statics::EnumInfo));

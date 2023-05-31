@@ -61,6 +61,9 @@
     <ClCompile Include="..\..\Source\PacmanGrid\Private\Clyde.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\PacmanGrid\Private\FruitNode.cpp">
+      <Filter>Source\PacmanGrid\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PacmanGrid\Private\GhostExitNode.cpp">
       <Filter>Source\PacmanGrid\Private</Filter>
     </ClCompile>
@@ -122,6 +125,9 @@
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\Clyde.h">
+      <Filter>Source\PacmanGrid\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PacmanGrid\Public\FruitNode.h">
       <Filter>Source\PacmanGrid\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PacmanGrid\Public\GhostExitNode.h">

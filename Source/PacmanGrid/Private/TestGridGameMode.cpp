@@ -5,6 +5,18 @@
 #include "PacmanWidget.h"
 
 
+void ATestGridGameMode::FruitSpawn()
+{
+
+	FruitPtr->FruitMesh->SetVisibility(true);
+	GetWorld()->GetTimerManager().SetTimer(FruitTimer, this, &ATestGridGameMode::FruitDestroy, 10.f, false);
+}
+
+void ATestGridGameMode::FruitDestroy()
+{
+	FruitPtr->FruitMesh->SetVisibility(false);
+}
+
 ATestGridGameMode::ATestGridGameMode()
 {
 	PowerNode_time = 6.0f;
@@ -51,6 +63,15 @@ void ATestGridGameMode::BeginPlay()
 	CurrentState=EState::Scatter;
 	GetWorld()->GetTimerManager().SetTimer(ScatterModeTimer, this, &ATestGridGameMode::ScatterMode, 3.0f , false);
 	PinkyPtr->ghostWait();
+
+	//spawn della frutta
+	FVector2D FruitLocation(15, 13);
+	FruitPtr = GetWorld()->SpawnActor<AFruitNode>(FruitClass, FVector((FruitLocation.X * 100) + 50, (FruitLocation.Y * 100) + 50, 6.f), FRotationMatrix::MakeFromX(FVector(0, 0, 0)).Rotator());
+	if (FruitPtr) {
+		FruitPtr->SetGridPosition(FruitLocation.X, FruitLocation.Y);
+		FruitPtr->TileCoordinatesPosition = FVector(FruitLocation.X, FruitLocation.Y, 6.f);
+
+	}
 }
 
 void ATestGridGameMode::FrightenedMode()

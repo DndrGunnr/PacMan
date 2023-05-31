@@ -121,6 +121,7 @@ void AInky::resetGhost()
 	NextNode = *(GridGenTMap.Find(InkySpawn));
 	SetTargetNode(*GridGenTMap.Find(InkySpawn));
 	SetActorLocation(FVector(1850.f, 1150.f, 5.f));
+	bIsEaten = false;
 	bIsWaiting= true;
 	bIsTimerStarted = false;
 }

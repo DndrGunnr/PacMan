@@ -14,8 +14,18 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define PACMANGRID_TestGridGameMode_generated_h
 
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_31_SPARSE_DATA
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_31_RPC_WRAPPERS
-#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_31_RPC_WRAPPERS_NO_PURE_DECLS
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_31_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execFruitDestroy); \
+	DECLARE_FUNCTION(execFruitSpawn);
+
+
+#define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_31_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execFruitDestroy); \
+	DECLARE_FUNCTION(execFruitSpawn);
+
+
 #define FID_PacMan_Leaked_main_Source_PacmanGrid_Public_TestGridGameMode_h_31_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesATestGridGameMode(); \

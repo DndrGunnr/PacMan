@@ -114,6 +114,7 @@ void APinky::resetGhost()
 	NextNode = *(GridGenTMap.Find(PinkySpawn));
 	SetTargetNode(*GridGenTMap.Find(PinkySpawn));
 	SetActorLocation(FVector(1850.f, 1350.f, 5.f));
+	bIsEaten = false;
 	bIsWaiting = true;
 	bIsTimerStarted = false;
 }

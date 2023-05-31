@@ -97,6 +97,7 @@ void ABlinky::resetGhost()
 	NextNode = *(GridGenTMap.Find(BlinkySpawn));
 	SetTargetNode(*(GridGenTMap.Find(BlinkySpawn)));
 	SetActorLocation(FVector(2150.f,1350.f,5.f));
+	bIsEaten = false;
 }
 
 

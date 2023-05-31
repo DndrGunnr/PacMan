@@ -113,6 +113,7 @@ void AClyde::resetGhost()
 	NextNode = *(GridGenTMap.Find(ClydeSpawn));
 	SetTargetNode(*GridGenTMap.Find(ClydeSpawn));
 	SetActorLocation(FVector(1850.f, 1550.f, 5.f));
+	bIsEaten = false;
 	bIsWaiting = true;
 	bIsTimerStarted = false;
 }

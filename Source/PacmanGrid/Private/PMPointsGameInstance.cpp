@@ -10,6 +10,7 @@ void UPMPointsGameInstance::Init()
 	fruit_points = 100;
 	power_points = 50;
 
+
 	lives = 3;
 
 	score = 0;
@@ -20,6 +21,7 @@ void UPMPointsGameInstance::add_powerPoints()
 {
 	score += power_points;
 	partialScore += power_points;
+
 }
 
 void UPMPointsGameInstance::add_basePoints()
@@ -55,6 +57,7 @@ void UPMPointsGameInstance::add_fruitPoints()
 void UPMPointsGameInstance::reset_score()
 {
 	score = 0;
+
 }
 
 void UPMPointsGameInstance::reset_partialScore()

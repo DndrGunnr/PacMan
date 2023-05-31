@@ -27,11 +27,13 @@ protected:
 		int32 power_points;
 
 
+
 	virtual void Init() override;
 
 public:
 	UPROPERTY(VisibleAnywhere)
 		int32 score;
+
 	//used by ghosts to check house exit condition
 	UPROPERTY(VisibleAnywhere)
 		int32 partialScore;

@@ -21,6 +21,8 @@ APacmanPawn::APacmanPawn()
 	CurrentGridCoords = FVector2D(9, 13);
 	PacmanNormalSpeed = 800.f;
 	PacmanPowerSpeed = 900.f;
+	DotsCount = 0;
+	PowerDotsCount = 0;
 
 	UIClass = nullptr;
 	UIWidget = nullptr;
@@ -33,10 +35,10 @@ APacmanPawn::APacmanPawn()
 void APacmanPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	if (GameMode->CurrentState == EState::Scatter)
+	if (GameMode->CurrentState == EState::Scatter || GameMode->CurrentState == EState::Chase)
 		CurrentMovementSpeed = PacmanNormalSpeed;
-	else if (GameMode->CurrentState == EState::Chase)
-		CurrentMovementSpeed = PacmanNormalSpeed;
+
+
 }
 
 void APacmanPawn::BeginPlay()
@@ -57,8 +59,10 @@ void APacmanPawn::BeginPlay()
 
 	UIWidget->DisplayLives(PointsGameInstance->lives);
 	UIWidget->DisplayScore(PointsGameInstance->score);
+	FruitCount = 0;
 	
 }
+
 
 void APacmanPawn::SetVerticalInput(float AxisValue)
 {
@@ -100,6 +104,9 @@ void APacmanPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 void APacmanPawn::resetLevel()
 {
 	//reset the level
+	DotsCount = 0;
+	PowerDotsCount = 0;
+	FruitCount = 0;
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 }
 
@@ -136,6 +143,27 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 
 			PointsGameInstance->add_basePoints();
 			UIWidget->DisplayScore(PointsGameInstance->score);
+			DotsCount++;
+			if (DotsCount > 70 && FruitCount == 0) {
+				FruitCount++;
+				GameMode->FruitSpawn();
+			}
+			else if (DotsCount > 170 && FruitCount == 1) {
+				FruitCount++;
+				GameMode->FruitSpawn();
+			}
+			else if (DotsCount == 240 && PowerDotsCount == 4) {
+				GetWorld()->GetTimerManager().SetTimer(DeathTimerHandle, this, &APacmanPawn::resetLevel, DeathTimer, false);
+
+				//pacman stops moving
+				CanMove = false;
+				//ghosts stop moving
+				GameMode->BlinkyPtr->CanMove = false;
+				GameMode->PinkyPtr->CanMove = false;
+				GameMode->InkyPtr->CanMove = false;
+				GameMode->ClydePtr->CanMove = false;
+
+			}
 		
 			
 	}
@@ -150,6 +178,7 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 		PointsGameInstance->add_powerPoints();
 		UIWidget->DisplayScore(PointsGameInstance->score);
 		SetCurrentSpeed(PacmanPowerSpeed);
+		PowerDotsCount++;
 
 
 		//asyncronous state change 
@@ -215,6 +244,14 @@ void APacmanPawn::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Ot
 		PointsGameInstance->add_ghostPoints(GameMode->EatenGhostCounter);
 		UIWidget->DisplayScore(PointsGameInstance->score);
 		
+	}
+
+	const auto FruitNode = Cast<AFruitNode>(OtherActor);
+	if (FruitNode && FruitNode->FruitMesh->IsVisible()) {
+		FruitNode->FruitMesh->SetVisibility(false);
+		PointsGameInstance->add_fruitPoints();
+		UIWidget->DisplayScore(PointsGameInstance->score);
+		GameMode->FruitDestroy();
 	}
 	
 }

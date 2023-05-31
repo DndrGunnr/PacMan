@@ -54,6 +54,15 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<APacmanPawn> PacmanClass;
 
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<AFruitNode> FruitClass;
+
+	UFUNCTION()
+		void FruitSpawn();
+
+	UFUNCTION()
+		void FruitDestroy();
+
 	//refererence to the ghosts
 	UPROPERTY(VisibleAnywhere)
 	ABlinky* BlinkyPtr;
@@ -66,6 +75,12 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	AClyde* ClydePtr;
+
+	UPROPERTY(VisibleAnywhere)
+	AFruitNode* FruitPtr;
+
+
+
 	//reference to the pacman
 	UPROPERTY(VisibleAnywhere)
 	AGridPawn* PacmanPtr;
@@ -120,6 +135,7 @@ private:
 	FTimerHandle ScatterModeTimer;
 	FTimerHandle ChaseModeTimer;
 	FTimerHandle FlashingTimer;
+	FTimerHandle FruitTimer;
 
 
 };
