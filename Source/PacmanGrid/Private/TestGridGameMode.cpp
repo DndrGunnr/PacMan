@@ -89,7 +89,7 @@ void ATestGridGameMode::FrightenedMode()
 	ClydePtr->flipDirection();
 	//updating the state of the game
 	CurrentState=EState::Frightened;
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Frightened Mode"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Frightened Mode"));
 	bIsFlashing = false;
 	EatenGhostCounter = 0;
 
@@ -127,7 +127,7 @@ void ATestGridGameMode::FlashingFrightenedMode()
 void ATestGridGameMode::ScatterMode()
 {
 	//Debug message
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Scatter Mode"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Scatter Mode"));
 	CurrentState = EState::Scatter;
 	Scatter_count += 1;
 	wasChaseMode = false;
@@ -152,7 +152,7 @@ void ATestGridGameMode::ScatterMode()
 void ATestGridGameMode::ChaseMode()
 {//Debug message
 
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Chase Mode"));
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Chase Mode"));
 	CurrentState = EState::Chase;
 	wasChaseMode = true;
 	//signaling ghost pawn to change their behaviour

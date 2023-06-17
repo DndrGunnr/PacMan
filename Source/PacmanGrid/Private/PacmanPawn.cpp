@@ -87,7 +87,7 @@ void APacmanPawn::OnClick()
 	if (AGridBaseNode* CurrTile = Cast<AGridBaseNode>(Hit.GetActor()))
 	{
 		FVector2D CurrCoords = CurrTile->GetGridPosition();
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("Position x=%f  Y=%f "), CurrCoords.X, CurrCoords.Y));
+		//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("Position x=%f  Y=%f "), CurrCoords.X, CurrCoords.Y));
 	}
 }
 
